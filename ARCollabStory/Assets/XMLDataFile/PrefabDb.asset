@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d58c52ff9f122a49a289c83a1611436, type: 3}
   m_Name: PrefabDb
   m_EditorClassIdentifier: 
-  Entries: []
+  Entries:
+  - MeshId: Logo
+    Prefab: {fileID: 8381951109971063050, guid: 5f13602da7df0b74cb42365bb2a0c6af, type: 3}
