@@ -10,38 +10,40 @@ public interface IInput
     public int LayerInfo(string layerName);
     public bool Tab(int layerMask);
     public bool Tab();
-    public void Drag();
+    public bool Drag();
 }
 
 public class TouchManager : MonoBehaviour, IInput
 {
-
     private Ray ray;
     private RaycastHit hit;
     private int layerMask;
+
+    private Touch touch;
 
     public float distance = 5f;
 
     void Update()
     {
-        if (Input.touchCount == 0)
+        touch = Input.GetTouch(0);
+        layerMask = LayerInfo("Default");
+
+        if (Input.touchCount == 0 || touch.phase == TouchPhase.Canceled)
         {
             return;
         }
 
-        Touch touch = Input.GetTouch(0);
-        layerMask = LayerInfo("Object");
 
         switch (touch.phase)
         {
             case TouchPhase.Began:
                 if (Tab(layerMask))
                 {
-                    //hit.transform.GetComponent<Tiger>()?.Die();
+                    hit.transform.gameObject.SetActive(false);
                 }
                 break;
             case TouchPhase.Moved:
-                if (Tab(layerMask))
+                if (Drag())
                 {
                     // 오브젝트 움직이기 위한 코루틴 호출
                     // 근데 굳이 코루틴이 필요할까...?
@@ -99,6 +101,7 @@ public class TouchManager : MonoBehaviour, IInput
     public bool Tab(int layerMask)
     {
         ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        Debug.Log($"{touch.position}");
 
         if (Physics.Raycast(ray, out hit, distance, layerMask))
         {
@@ -110,9 +113,10 @@ public class TouchManager : MonoBehaviour, IInput
         }
     }
 
-    public void Drag()
+    public bool Drag()
     {
-
+        Debug.Log("우가!!!!!!!!!!!!!!!!!!!!!!");
+        return true;
     }
 
     /*
