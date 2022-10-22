@@ -7,77 +7,55 @@ using UnityEngine.XR.ARSubsystems;
 
 public interface IInput
 {
-    public int LayerInfo(string layerName);
+    //public int LayerInfo(string layerName);
     public bool Tab(int layerMask);
     public bool Tab();
-    public bool Drag();
+    public bool OpenBook();
+}
+
+public enum LayerMaskID
+{
+    OPENBOOK = 128,
 }
 
 public class TouchManager : MonoBehaviour, IInput
 {
     private Ray ray;
     private RaycastHit hit;
-    private int layerMask;
+    //private int layerMask;
+    //private LayerMaskID layerMask;
 
     private Touch touch;
+    private Vector2 tabPoint = new Vector2();
 
     public float distance = 5f;
 
     void Update()
     {
-        touch = Input.GetTouch(0);
-        layerMask = LayerInfo("Default");
-
-        if (Input.touchCount == 0 || touch.phase == TouchPhase.Canceled)
+        if (Input.touchCount == 0 || Input.GetTouch(0).phase == TouchPhase.Canceled)
         {
             return;
         }
 
+        touch = Input.GetTouch(0);
 
         switch (touch.phase)
         {
             case TouchPhase.Began:
-                if (Tab(layerMask))
-                {
-                    hit.transform.gameObject.SetActive(false);
-                }
+                Tab();
                 break;
             case TouchPhase.Moved:
-                if (Drag())
+                if (tabPoint.x >= 1050)
                 {
-                    // 오브젝트 움직이기 위한 코루틴 호출
-                    // 근데 굳이 코루틴이 필요할까...?
+                    OpenBook();
                 }
                 break;
             case TouchPhase.Ended:
-                if (Tab(layerMask))
-                {
-                    // 이전  phase가 move였다면 코루틴 중단
-                }
                 break;
         }
-
-        /*
-        // 터치
-        if (touch.phase == TouchPhase.Began)
-        {
-            layerMask = LayerInfo("Object");
-            if (Tab(layerMask))
-            {
-                hit.transform.GetComponent<Tiger>()?.Die();
-            }
-        }
-        //드래그
-        if (touch.phase == TouchPhase.Moved)
-        {
-            layerMask = LayerInfo("Default");
-            if (Tab(layerMask))
-        }
-
-        if (touch.)
-        */
     }
 
+    /*
     /// <summary>
     /// 몇 번째 레이어인지 반환
     /// </summary>
@@ -91,6 +69,7 @@ public class TouchManager : MonoBehaviour, IInput
 
         return layerMask;
     }
+    */
 
     // 터치해서 만약 오브젝트가 있다면 true, 없다면 false 반환하는 형태로 가야할지
     public bool Tab()
@@ -100,7 +79,9 @@ public class TouchManager : MonoBehaviour, IInput
 
     public bool Tab(int layerMask)
     {
-        ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        tabPoint = touch.position;
+
+        ray = Camera.main.ScreenPointToRay(touch.position);
         Debug.Log($"{touch.position}");
 
         if (Physics.Raycast(ray, out hit, distance, layerMask))
@@ -113,9 +94,14 @@ public class TouchManager : MonoBehaviour, IInput
         }
     }
 
-    public bool Drag()
+    public bool OpenBook()
     {
-        Debug.Log("우가!!!!!!!!!!!!!!!!!!!!!!");
+        //ray = Camera.main.ScreenPointToRay(touch.position);
+        //Debug.Log($"맞은놈 : {hit.transform.position} / 터치위치 : {touch.position}");
+        //hit.transform.position = touch.position;
+
+        Debug.Log("스와이프");
+
         return true;
     }
 
@@ -149,6 +135,5 @@ public class TouchManager : MonoBehaviour, IInput
             }
         }
     }
-
     */
 }
