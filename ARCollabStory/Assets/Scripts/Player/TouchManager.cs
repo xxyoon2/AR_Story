@@ -16,7 +16,6 @@ public interface IInput
 public enum LayerMaskID
 {
     OPENBOOK = 128,
-    GRASS = 1024
 }
 
 public class TouchManager : MonoBehaviour, IInput
@@ -44,7 +43,6 @@ public class TouchManager : MonoBehaviour, IInput
         {
             case TouchPhase.Began:
                 Tab();
-                Tab((int)LayerMaskID.GRASS);
                 break;
             case TouchPhase.Moved:
                 if (tabPoint.x >= 1050)
@@ -88,6 +86,7 @@ public class TouchManager : MonoBehaviour, IInput
 
         if (Physics.Raycast(ray, out hit, distance, layerMask))
         {
+            hit.transform.GetComponent<Grass>()?.Catch();
             return true;
         }
         else

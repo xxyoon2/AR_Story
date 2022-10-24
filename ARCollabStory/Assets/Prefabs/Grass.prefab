@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5792206072511832379}
   - component: {fileID: 5792206072511832378}
   - component: {fileID: 5792206072511832373}
+  - component: {fileID: 2464495898233860543}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -95,3 +96,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2464495898233860543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792206072511832372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825ce648c9e87044f99ee1ea1b4355a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
