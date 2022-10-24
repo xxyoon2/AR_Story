@@ -9,14 +9,14 @@ public class GrassSpawner : MonoBehaviour
     public GameObject GrassPrefab;
     public ARAnchorManager ARAnchorManager;
 
-    private LoadAnchorData _loadAnchorData;
+    private AnchorDataManager _anchorDataManager;
     private GameObject[] _grasses;
 
-    private void Awake()
+    public void Spawn()
     {
-        _loadAnchorData = GetComponent<LoadAnchorData>();
+        _anchorDataManager = GetComponent<AnchorDataManager>();
 
-        int anchorCount = _loadAnchorData.CountAnchorData();
+        int anchorCount = _anchorDataManager.CountAnchorData();
         if (anchorCount == 0)
         {
             Debug.Log("저장된 데이터가 없습니다.");
@@ -27,12 +27,12 @@ public class GrassSpawner : MonoBehaviour
 
         for (int i = 0; i < anchorCount; i++)
         {
-            ARCloudAnchor arCloudAnchor = ARAnchorManagerExtensions.ResolveCloudAnchorId(ARAnchorManager, _loadAnchorData.GetAnchorID(i));
+            ARCloudAnchor arCloudAnchor = ARAnchorManagerExtensions.ResolveCloudAnchorId(ARAnchorManager, _anchorDataManager.GetAnchorID(i));
             Vector3 position = arCloudAnchor.transform.position + new Vector3(0f, 0.1f, 0f);
             Quaternion rotation = arCloudAnchor.transform.rotation;
 
             _grasses[i] = Instantiate(GrassPrefab, position, rotation);
-            _grasses[i].SetActive(false);
+            //_grasses[i].SetActive(false);
         }
     }
 }
