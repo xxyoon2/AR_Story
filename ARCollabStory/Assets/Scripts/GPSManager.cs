@@ -26,7 +26,6 @@ public class GPSManager : SingletonBehaviour<GPSManager>
         //Unity Remote와 연결되지 않을 시 null 반환
         while (!UnityEditor.EditorApplication.isRemoteConnected)
         {
-            //Debug.Log("리모트 연결 안 됨");
             yield return null;
         }
 #endif
@@ -77,6 +76,9 @@ public class GPSManager : SingletonBehaviour<GPSManager>
         }
     }
 
+    /// <summary>
+    /// 사용자의 위치 상태를 확인하고 맵 이미지를 갱신하거나 위치 정보를 다시 받아오도록 시도한다
+    /// </summary>
     private void UpdateGPS()
     {
         if (Input.location.status == LocationServiceStatus.Running)

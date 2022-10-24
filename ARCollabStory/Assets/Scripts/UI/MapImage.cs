@@ -8,6 +8,7 @@ public class MapImage : MonoBehaviour
 {
     public RawImage mapRawImage;
 
+    // 출력할 맵의 정보를 담은 변수 목록
     [Header("Map Info")]
     private string _strBaseURL = "https://maps.googleapis.com/maps/api/staticmap?";
     private string _centerPos = "37.540233,127.122505";
@@ -32,6 +33,12 @@ public class MapImage : MonoBehaviour
 
     private double lastLat = 0;
     private double lastLon = 0;
+
+    /// <summary>
+    /// 플레이어의 위도/경도 정보가 바뀔 시 새 위치 정보를 기반으로 맵 이미지를 다시 요청한다
+    /// </summary>
+    /// <param name="playerLat"></param>
+    /// <param name="playerLon"></param>
     private void SendRequestToReloadMap(float playerLat, float playerLon)
     {
         if (lastLat != playerLat || lastLon != playerLon)
@@ -41,6 +48,13 @@ public class MapImage : MonoBehaviour
             StartCoroutine(LoadMap(playerLat, playerLon));
         }
     }
+
+    /// <summary>
+    /// 맵 이미지에 대한 정보를 기반으로 지도 이미지를 그리는 url을 생성한 후 위 url로부터 이미지를 가져와 텍스쳐로 적용시킨다
+    /// </summary>
+    /// <param name="playerLat"></param>
+    /// <param name="playerLon"></param>
+    /// <returns></returns>
     IEnumerator LoadMap(float playerLat, float playerLon)
     {
         _latitude = playerLat;
