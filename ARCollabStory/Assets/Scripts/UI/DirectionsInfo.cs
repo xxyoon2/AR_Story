@@ -5,34 +5,32 @@ using UnityEngine.UI;
 
 public class DirectionsInfo : MonoBehaviour
 {
-    // ¸ñÀûÁö °³¼ö¸¸Å­ »ı¼ºÇØ µĞ ¹öÆ° ui¸¦ csv ÆÄÀÏ¿¡¼­ ÆÄ½ÌÇÑ °¢°¢ÀÇ À§Ä¡ µ¥ÀÌÅÍ¿Í ¿¬µ¿ÇÏ´Â ½ºÅ©¸³Æ®
-
-
+    // ëª©ì ì§€ ê°œìˆ˜ë§Œí¼ ìƒì„±í•´ ë‘” ë²„íŠ¼ uië¥¼ csv íŒŒì¼ì—ì„œ íŒŒì‹±í•œ ê°ê°ì˜ ìœ„ì¹˜ ë°ì´í„°ì™€ ì—°ë™í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸
     private Locations[] _directionAreas;
     private int _areaCount;
     
     void Start()
     {
-        // ¸ñÀûÁöÀÇ ¼ö¸¸Å­ À§Ä¡ Á¤º¸¸¦ ´ãÀ» ¹è¿­ »ı¼º
+        // ëª©ì ì§€ì˜ ìˆ˜ë§Œí¼ ìœ„ì¹˜ ì •ë³´ë¥¼ ë‹´ì„ ë°°ì—´ ìƒì„±
         _areaCount = transform.childCount;
         _directionAreas = new Locations[_areaCount];
-        Debug.Log("¸ñÀûÁö¹è¿­¸¸µê");
+        Debug.Log("ëª©ì ì§€ë°°ì—´ë§Œë“¦");
 
         for(int i = 0; i < _areaCount; i++)
         {
             _directionAreas[i] = transform.GetChild(i).gameObject.GetComponent<Locations>();
-            Debug.Log("¹Ş¾Æ¿È");
+            Debug.Log("ë°›ì•„ì˜´");
             _directionAreas[i].OrderIndex = GameManager.Instance.LocationRecords[i + 1].DirectionIndex;
-            Debug.Log("¹öÆ°¿¬°áÇØ¿ä");
+            Debug.Log("ë²„íŠ¼ì—°ê²°í•´ìš”");
         }
 
-        // ¸ñÀûÁöÀÇ »óÅÂ¿¡ µû¶ó ¹öÆ° uiÀÇ »ö»óÀ» ¹Ù²ãÁÖ´Â ÇÔ¼ö ½ÇÇà
+        // ëª©ì ì§€ì˜ ìƒíƒœì— ë”°ë¼ ë²„íŠ¼ uiì˜ ìƒ‰ìƒì„ ë°”ê¿”ì£¼ëŠ” í•¨ìˆ˜ ì‹¤í–‰
         Invoke("ButtonColorChange", 2f);
     }
 
     void ButtonColorChange()
     {
-        // ¸ñÀûÁö »óÅÂ¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ÀÌº¥Æ® ½ÇÇà
+        // ëª©ì ì§€ ìƒíƒœë¥¼ ì—…ë°ì´íŠ¸í•˜ëŠ” ì´ë²¤íŠ¸ ì‹¤í–‰
         GameManager.Instance.StatusUpdateAlarm();
     }
 }
