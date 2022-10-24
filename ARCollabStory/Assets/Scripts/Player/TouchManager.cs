@@ -82,10 +82,11 @@ public class TouchManager : MonoBehaviour, IInput
         tabPoint = touch.position;
 
         ray = Camera.main.ScreenPointToRay(touch.position);
-        Debug.Log($"{touch.position}");
+        //Debug.Log($"{touch.position}");
 
         if (Physics.Raycast(ray, out hit, distance, layerMask))
         {
+            Debug.Log($"{hit.transform.gameObject}");
             return true;
         }
         else
