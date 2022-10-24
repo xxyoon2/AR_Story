@@ -409,7 +409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1658087060
 GameObject:
@@ -426,6 +426,8 @@ GameObject:
   - component: {fileID: 1658087063}
   - component: {fileID: 1658087062}
   - component: {fileID: 1658087067}
+  - component: {fileID: 1658087069}
+  - component: {fileID: 1658087068}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -554,6 +556,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 5
+--- !u!114 &1658087068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658087060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AnchorPrefab: {fileID: 0}
+--- !u!114 &1658087069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658087060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
 --- !u!1 &1740553825
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1740553826}
   - component: {fileID: 1740553827}
+  - component: {fileID: 1740553828}
   m_Layer: 0
   m_Name: Grass Spawner
   m_TagString: Untagged
@@ -583,7 +612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1740553827
 MonoBehaviour:
@@ -597,60 +626,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebce157c19572e469d15dcd2dfca054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &5792206072792602514
-PrefabInstance:
+  DataFileName: DataFile
+  AnchorDataFileName: AnchorData.json
+--- !u!114 &1740553828
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5792206072511832372, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_Name
-      value: Grass
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792206072511832376, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740553825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e4e1e63adf8e943bb59fa6c2d2eb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrassPrefab: {fileID: 5792206072511832372, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
+  ARAnchorManager: {fileID: 1658087068}
