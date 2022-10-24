@@ -42,6 +42,7 @@ public class CSVParser
                 foreach (LocationRecord record in records)
                 { 
                     locationRecords.Add(record);
+                    Debug.Log("¿ì");
                 }
             }
         }

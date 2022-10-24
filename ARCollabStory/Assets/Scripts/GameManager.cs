@@ -18,6 +18,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             _locationRecords = value;
         }
     }
+
     void OnEnable()
     {
         _locationRecords = CSVParser.GetLocationInfos();

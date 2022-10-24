@@ -10,10 +10,10 @@ public class MapImage : MonoBehaviour
 
     [Header("Map Info")]
     private string _strBaseURL = "https://maps.googleapis.com/maps/api/staticmap?";
-    private string _centerPos = "37.539227,127.124102";
+    private string _centerPos = "37.540233,127.122505";
     private double _latitude = 37.53969;
     private double _longitude = 127.1234;
-    private int zoom = 16;
+    private int zoom = 17;
     private int mapWidth = 2400;
     private int mapHeight = 2400;
     [SerializeField]

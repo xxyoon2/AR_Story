@@ -1,5 +1,7 @@
 DirectionIndex|MissionTypeInfo|MissionStatus|Latitude|Longuitude
-1|Story|Done|0.001|1.12
-2|Quest|InProgress|35.2|2
-3|MiniGame|NotStarted|5.234|4.12314
-4|Story|NotStarted|32.14452|34.23455
+1|Story|InProgress|37.539165|127.122485
+2|Quest|NotStarted|37.541503|127.123644
+3|EndZone|NotStarted|37.541406|127.122656
+4|Quest|NotStarted|37.540312|127.121889
+5|EndZone|NotStarted|37.540677|127.121149
+6|Minigame|NotStarted|37.541196|127.121660

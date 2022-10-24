@@ -26,6 +26,7 @@ public class Locations : MonoBehaviour
     private void ChangeStatus()
     {
         _directionStatus = GameManager.Instance.LocationRecords[_orderIndex].MissionStatus;
+
         switch(_directionStatus)
         {
             case "NotStarted":
