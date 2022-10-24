@@ -5,18 +5,17 @@ using UnityEngine.UI;
 
 public class Locations : MonoBehaviour
 {
-    // °¢°¢ÀÇ ¸ñÀûÁö¸¦ csvµ¥ÀÌÅÍ¿Í ¿¬µ¿ÇÏ°í »óÅÂ¸¦ ÀúÀåÇÏ´Â ½ºÅ©¸³Æ®
-
-    private string _directionStatus;
+    // ê°ê°ì˜ ëª©ì ì§€ë¥¼ csvë°ì´í„°ì™€ ì—°ë™í•˜ê³  ìƒíƒœë¥¼ ì €ì¥í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸
     private int _orderIndex;
-    private bool _canInteract;
     public int OrderIndex
     {
         get { return _orderIndex; }
         set { _orderIndex = value; }
     }
+    private string _directionStatus;
+    private bool _canInteract;
 
-    // uiÀÇ »ö»óÀ» º¯°æÇÏ±â À§ÇÑ º¯¼ö
+    // uiì˜ ìƒ‰ìƒì„ ë³€ê²½í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
     private ColorBlock _colorBlock;
     private Button _button;
 
@@ -28,8 +27,8 @@ public class Locations : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸ñÀûÁöÀÇ ÁøÇà»óÈ²¿¡ µû¶ó uiÀÇ »ö»ó°ú »óÈ£ÀÛ¿ë °¡´É ¿©ºÎ¸¦ ¼öÁ¤ÇÑ´Ù
-    /// Áßº¹ ÄÚµå´Â Â÷ÈÄ ¼öÁ¤ ¿¹Á¤
+    /// ëª©ì ì§€ì˜ ì§„í–‰ìƒí™©ì— ë”°ë¼ uiì˜ ìƒ‰ìƒê³¼ ìƒí˜¸ì‘ìš© ê°€ëŠ¥ ì—¬ë¶€ë¥¼ ìˆ˜ì •í•œë‹¤
+    /// ì¤‘ë³µ ì½”ë“œëŠ” ì°¨í›„ ìˆ˜ì • ì˜ˆì •
     /// </summary>
     private void ChangeStatus()
     {
@@ -56,17 +55,17 @@ public class Locations : MonoBehaviour
     }
 
     /// <summary>
-    /// »ç¿ëÀÚ°¡ ui¸¦ ÅÍÄ¡ÇßÀ» ¶§ »óÈ£ÀÛ¿ë ¿©ºÎ¿¡ µû¶ó ´Ù¸¥ ·Î±×¸¦ Ãâ·Â
+    /// ì‚¬ìš©ìê°€ uië¥¼ í„°ì¹˜í–ˆì„ ë•Œ ìƒí˜¸ì‘ìš© ì—¬ë¶€ì— ë”°ë¼ ë‹¤ë¥¸ ë¡œê·¸ë¥¼ ì¶œë ¥
     /// </summary>
     public void OnClick()
     {
         if(_canInteract)
         {
-            Debug.Log("»óÈ£ÀÛ¿ë °¡´É");
+            Debug.Log("ìƒí˜¸ì‘ìš© ê°€ëŠ¥");
         }
         else
         {
-            Debug.Log("ÇöÀç ºñÈ°¼ºÈ­ »óÅÂÀÔ´Ï´Ù");
+            Debug.Log("í˜„ì¬ ë¹„í™œì„±í™” ìƒíƒœì…ë‹ˆë‹¤");
         }
     }
 }
