@@ -7,31 +7,41 @@ using UnityEngine.XR.ARFoundation;
 public class GrassSpawner : MonoBehaviour
 {
     public GameObject GrassPrefab;
-    public ARAnchorManager ARAnchorManager;
 
+    private ARAnchorManager _arAnchorManager;
     private AnchorDataManager _anchorDataManager;
     private GameObject[] _grasses;
 
-    public void Spawn()
+    private void Awake()
     {
+        _arAnchorManager = GetComponent<ARAnchorManager>();
         _anchorDataManager = GetComponent<AnchorDataManager>();
+    }
 
+    /// <summary>
+    /// cloud Anchor ID를 사용해서 anchor 위치에 풀덩이를 생성하는 메서드
+    /// </summary>
+    public void Create()
+    {
         int anchorCount = _anchorDataManager.CountAnchorData();
+        // 앵커가 하나도 없다면
         if (anchorCount == 0)
         {
             Debug.Log("저장된 데이터가 없습니다.");
             return;
         }
 
+        // 앵커의 개수만큼 오브젝트 생성
         _grasses = new GameObject[anchorCount];
 
         for (int i = 0; i < anchorCount; i++)
         {
-            ARCloudAnchor arCloudAnchor = ARAnchorManagerExtensions.ResolveCloudAnchorId(ARAnchorManager, _anchorDataManager.GetAnchorID(i));
-            Vector3 position = arCloudAnchor.transform.position + new Vector3(0f, 0.1f, 0f);
-            Quaternion rotation = arCloudAnchor.transform.rotation;
+            // anchorID를 사용해 arCloudAnchor 반환
+            string anchorID = _anchorDataManager.GetAnchorID(i);
+            ARCloudAnchor arCloudAnchor = _arAnchorManager.ResolveCloudAnchorId(anchorID);
 
-            _grasses[i] = Instantiate(GrassPrefab, position, rotation);
+            // 앵커 위치에 풀덩이 생성
+            _grasses[i] = Instantiate(GrassPrefab, arCloudAnchor.transform);
             //_grasses[i].SetActive(false);
         }
     }
