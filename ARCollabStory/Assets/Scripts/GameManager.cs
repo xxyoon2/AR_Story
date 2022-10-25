@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using CsvHelper;
+using CsvHelper.Configuration;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
     public UnityEvent DirectionsStatusUpdate = new UnityEvent();
+    public UnityEvent SetCSVData = new UnityEvent();
     private List<LocationRecord> _locationRecords;
 
-    // csv ÆÄ½ÌÇØ¼­ ÀúÀåÇÒ ¸®½ºÆ®
+    // csv íŒŒì‹±í•´ì„œ ì €ìž¥í•  ë¦¬ìŠ¤íŠ¸
     public List<LocationRecord> LocationRecords
     {
         get 
@@ -21,9 +24,10 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
     }
 
-    void OnEnable()
+    void Start()
     {
         _locationRecords = CSVParser.GetLocationInfos();
+        SetCSVData.Invoke();
     }
 
     public void StatusUpdateAlarm()
