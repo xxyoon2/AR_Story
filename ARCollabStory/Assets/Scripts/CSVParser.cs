@@ -15,12 +15,18 @@ public class LocationRecord
     public double Longuitude { get; set; }
 }
 
+public class DialogueRecord
+{
+    public int Index { get; set; }
+    public string Name { get; set; }
+    public string Dialogue { get; set; }
+}
+
 
 public static class CSVParser
 {
     public static List<LocationRecord> GetLocationInfos()
-    {
-        System.Collections.Generic.List<LocationRecord> list = new List<LocationRecord>();
+    { 
         TextAsset locationTextAsset = Resources.Load<TextAsset>("LocationsInfo");
         List<LocationRecord> locationRecords = new List<LocationRecord>();
         locationRecords.Add(null);
@@ -41,5 +47,27 @@ public static class CSVParser
             }
         }
         return locationRecords;
+    }
+
+    public static List<DialogueRecord> GetDialogueInfos()
+    {
+        TextAsset dialogueTextAsset = Resources.Load<TextAsset>("DialogueTest");
+        List<DialogueRecord> dialogues = new List<DialogueRecord>();
+        dialogues.Add(null);
+        using (StringReader csvString = new StringReader(dialogueTextAsset.text))
+        {
+            while (csvString.Peek() > -1)
+            {
+                string stringData = csvString.ReadLine();
+                var dataValues = stringData.Split('|');
+                DialogueRecord parseData = new DialogueRecord();
+                if (int.TryParse(dataValues[0], out int intData)) parseData.Index = int.Parse(dataValues[0]);
+                parseData.Name = dataValues[1];
+                parseData.Dialogue = dataValues[2];
+                Debug.Log($"{parseData.Dialogue}");
+                dialogues.Add(parseData);
+            }
+        }
+        return dialogues;
     }
 }
