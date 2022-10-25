@@ -8,7 +8,6 @@ public class RenderActiveByDistance : MonoBehaviour
     public float ActiveDistance = 0.1f;
     private GameObject _mainCamera;
     private MeshRenderer _meshRenderer;
-    private bool _isWalkingDestination;
     private bool _isActive;
 
     private void Awake()
@@ -32,19 +31,20 @@ public class RenderActiveByDistance : MonoBehaviour
     /// 플레이어와 거리가 가까워졌을 때 화살표가 보이게 하는 함수
     /// 플레이어와 거리가 멀어지면 자신을 비활성화
     /// </summary>
-    public void SetRendererActive()
+    private void SetRendererActive()
     {
         double distanceToPlayer = Vector3.Distance(transform.position, _mainCamera.transform.position);
+
+        if (_isActive && distanceToPlayer > ActiveDistance)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
 
         if (!_isActive && distanceToPlayer < ActiveDistance)
         {
             _meshRenderer.enabled = true;
             _isActive = true;
-        }
-        
-        if (_isActive && distanceToPlayer > ActiveDistance)
-        {
-            gameObject.SetActive(false);
         }
     }
 }

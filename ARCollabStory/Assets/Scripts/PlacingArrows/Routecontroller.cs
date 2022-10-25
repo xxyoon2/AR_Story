@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Routecontroller : MonoBehaviour
+public class RouteController : MonoBehaviour
 {
     private GameObject Stage1Routes;
     //Stage1에 있는 루트들
