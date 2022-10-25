@@ -42,30 +42,9 @@ public class DestinationObject : MonoBehaviour
         //"목적지에 도착했을 때"를 얻는 것은 이 코드에서 하면 됨
         if (distanceToPlayer < Distance)
         {
-            ActiveRoutes(TypeOfDestination);
+            //   
         }
     }
 
 
-
-
-    public void ActiveRoutes(TypeOfDestinationObject typeOfDestinationObject)
-    {
-        switch (typeOfDestinationObject)
-        {
-            case TypeOfDestinationObject.StartQuestDestination:
-                if(Secondroute.activeSelf)
-                {
-                    Secondroute.SetActive(false);
-                }
-                StartRoute.SetActive(false);
-                break;
-            case TypeOfDestinationObject.EndQuestDestination:
-                Secondroute.SetActive(true);
-                break;
-            case TypeOfDestinationObject.StartMiniGameDestination:
-                Secondroute.SetActive(false);
-                break;
-        }
-    }
 }
