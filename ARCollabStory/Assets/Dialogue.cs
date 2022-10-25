@@ -8,6 +8,7 @@ public class Dialogue : MonoBehaviour
     private TextMeshProUGUI _ui;
     private int _dialogueIndex = 1;
     private List<DialogueRecord> _records;
+    
     void Awake()
     {
         _records = CSVParser.GetDialogueInfos();
@@ -19,6 +20,7 @@ public class Dialogue : MonoBehaviour
         DialoguePrint();
     }
 
+    // 순서에 맞게 대화창 출력
     void DialoguePrint()
     {
         _dialogueIndex++;
