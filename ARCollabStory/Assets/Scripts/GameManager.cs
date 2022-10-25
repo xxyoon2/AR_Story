@@ -14,14 +14,10 @@ public class GameManager : SingletonBehaviour<GameManager>
     // csv 파싱해서 저장할 리스트
     public List<LocationRecord> LocationRecords
     {
-        get 
-        { 
-            return _locationRecords; 
-        }
-        set 
-        {
-            _locationRecords = value;
-        }
+        get
+        { return _locationRecords; }
+        set
+        { _locationRecords = value; }
     }
 
     void Start()
