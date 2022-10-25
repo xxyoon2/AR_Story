@@ -21,4 +21,9 @@
                     -keep class com.google.android.gms.location.** { *; }
                     -keep class com.google.android.gms.tasks.** { *; }
 
+## AuthenticationModule ##
+-keep class com.google.android.gms.common.** { *; }
+                    -keep class com.google.android.gms.auth.** { *; }
+                    -keep class com.google.android.gms.tasks.** { *; }
+
 ### Module Progurad Rules ends ###
