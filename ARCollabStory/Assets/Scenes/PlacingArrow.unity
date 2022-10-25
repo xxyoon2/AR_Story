@@ -298,37 +298,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &461784537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 461784538}
-  m_Layer: 0
-  m_Name: Routes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &461784538
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461784537}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1079181164}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670045184
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670045185}
   m_Layer: 0
-  m_Name: Stage1DestinationObjects
+  m_Name: DestinationObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +321,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670045184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -362,8 +331,8 @@ Transform:
   - {fileID: 1827939234}
   - {fileID: 1542846665}
   - {fileID: 1447391473}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1601851264}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1079181163
 GameObject:
@@ -374,9 +343,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1079181164}
-  - component: {fileID: 1079181165}
   m_Layer: 0
-  m_Name: Stage1Route
+  m_Name: Route
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -396,22 +364,9 @@ Transform:
   - {fileID: 2027936753}
   - {fileID: 22218124}
   - {fileID: 1227345985}
-  m_Father: {fileID: 461784538}
+  m_Father: {fileID: 1601851264}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1079181165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079181163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9580bb26c7fc16747afdff440f6d4840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _destinationObjects: {fileID: 0}
 --- !u!1 &1127743683
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeOfDestination: 0
   Distance: 0.01
+  Stage1Routes: {fileID: 0}
 --- !u!114 &1127743686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,6 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeOfDestination: 0
   Distance: 0.01
+  Stage1Routes: {fileID: 0}
 --- !u!114 &1421172150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeOfDestination: 3
   Distance: 0.01
+  Stage1Routes: {fileID: 0}
 --- !u!114 &1447391475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeOfDestination: 1
   Distance: 0.01
+  Stage1Routes: {fileID: 0}
 --- !u!114 &1542846667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,6 +885,38 @@ MonoBehaviour:
   ObjectPositionUpdated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1601851263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601851264}
+  m_Layer: 0
+  m_Name: Stage1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1601851264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601851263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1079181164}
+  - {fileID: 670045185}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1615743295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeOfDestination: 2
   Distance: 0.01
+  Stage1Routes: {fileID: 0}
 --- !u!114 &1827939236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeOfDestination: 2
   Distance: 0.01
+  Stage1Routes: {fileID: 0}
 --- !u!114 &2130782931
 MonoBehaviour:
   m_ObjectHideFlags: 0
