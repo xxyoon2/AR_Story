@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8230606694390406658}
   - component: {fileID: 7663766887225316093}
   - component: {fileID: 2239145604994920830}
+  - component: {fileID: 5265249855650900279}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -96,3 +97,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5265249855650900279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381951109971063050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8351d249acf674d9c1d325e03a3d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveDistance: 0.1

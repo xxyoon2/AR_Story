@@ -41,7 +41,8 @@ public class RenderActiveByDistance : MonoBehaviour
             _meshRenderer.enabled = true;
             _isActive = true;
         }
-        else if (_isActive && distanceToPlayer > ActiveDistance)
+        
+        if (_isActive && distanceToPlayer > ActiveDistance)
         {
             gameObject.SetActive(false);
         }
