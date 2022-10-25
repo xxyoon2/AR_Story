@@ -32,7 +32,7 @@ public class Locations : MonoBehaviour
     /// </summary>
     private void ChangeStatus()
     {
-        _directionStatus = GameManager.Instance.LocationRecords[_orderIndex].MissionStatus;
+        _directionStatus = GameManager.Instance.LocationRecords[_orderIndex + 1].MissionStatus;
 
         switch(_directionStatus)
         {

@@ -1,5 +1,3 @@
-using CsvHelper;
-using CsvHelper.Configuration;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,29 +20,26 @@ public static class CSVParser
 {
     public static List<LocationRecord> GetLocationInfos()
     {
+        System.Collections.Generic.List<LocationRecord> list = new List<LocationRecord>();
         Debug.Log("csv파일 가져와볼게요");
-        TextAsset locationTextAsset = Resources.Load<TextAsset>(Application.dataPath + "LocationsInfo");
-        Debug.Log("위치정보 파일 로드함");
+        TextAsset locationTextAsset = Resources.Load<TextAsset>("LocationsInfo2");
         List<LocationRecord> locationRecords = new List<LocationRecord>();
         locationRecords.Add(null);
         Debug.Log("리스트에 빈 공간 추가");
-        CsvConfiguration config = new CsvConfiguration(CultureInfo.InvariantCulture)
-        {
-            Delimiter = "|",
-            NewLine = Environment.NewLine
-        };
-        Debug.Log("CSVconfiguration 완료");
-
         using (StringReader csvString = new StringReader(locationTextAsset.text))
         {
-            using (CsvReader csv = new CsvReader(csvString, config))
+
+            while(csvString.Peek() > -1)
             {
-                IEnumerable<LocationRecord> records = csv.GetRecords<LocationRecord>();
-                foreach (LocationRecord record in records)
-                {
-                    Debug.Log($"{record.DirectionIndex}");
-                    locationRecords.Add(record);
-                }
+                string stringData = csvString.ReadLine();
+                var dataValues = stringData.Split('|');
+                LocationRecord parseData = new LocationRecord();
+                if(int.TryParse(dataValues[0], out int intData)) parseData.DirectionIndex = int.Parse(dataValues[0]);
+                parseData.MissionTypeInfo = dataValues[1];
+                parseData.MissionStatus = dataValues[2];
+                if(double.TryParse(dataValues[3], out double doubleData1)) parseData.Latitude = double.Parse(dataValues[3]);
+                if(double.TryParse(dataValues[4], out double doubleData2)) parseData.Longuitude = double.Parse(dataValues[4]);
+                locationRecords.Add(parseData);
             }
         }
         Debug.Log("파싱 완료");
