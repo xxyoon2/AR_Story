@@ -9,7 +9,7 @@ public class GrassSpawnButton : MonoBehaviour
 
     public void Click()
     {
-        AnchorDataManager.Load();
+        AnchorDataManager.Load("HideAndSeekTest.json");
         GrassSpawner.Spawn();
     }
 }

@@ -60,7 +60,6 @@ public class AnchorDataManager : MonoBehaviour
 {
     private List<AnchorData> _anchorDatas = new List<AnchorData>();
     private string _dataFileName = "DataFile";
-    private string _anchorDataFileName = "HideAndSeekTest.json";
 
     /// <summary>
     /// Anchor List에 data가 몇 개 있는지 반환하는 메서드
@@ -84,10 +83,11 @@ public class AnchorDataManager : MonoBehaviour
     /// <summary>
     /// 저장된 파일을 불러와 Anchor List로 만드는 메서드
     /// </summary>
-    public void Load()
+    /// <param name="fileName">불러올 파일 이름</param>
+    public void Load(string fileName)
     {
         // 파일을 불러올 경로 생성
-        string filePath = Path.Combine(Application.persistentDataPath, _dataFileName, _anchorDataFileName);
+        string filePath = Path.Combine(Application.persistentDataPath, _dataFileName, fileName);
         Debug.Log(filePath);
 
         // 해당 경로에 파일이 존재하지 않는다면 log 출력
