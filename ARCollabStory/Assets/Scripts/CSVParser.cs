@@ -21,11 +21,9 @@ public static class CSVParser
     public static List<LocationRecord> GetLocationInfos()
     {
         System.Collections.Generic.List<LocationRecord> list = new List<LocationRecord>();
-        Debug.Log("csv파일 가져와볼게요");
-        TextAsset locationTextAsset = Resources.Load<TextAsset>("LocationsInfo2");
+        TextAsset locationTextAsset = Resources.Load<TextAsset>("LocationsInfo");
         List<LocationRecord> locationRecords = new List<LocationRecord>();
         locationRecords.Add(null);
-        Debug.Log("리스트에 빈 공간 추가");
         using (StringReader csvString = new StringReader(locationTextAsset.text))
         {
 
@@ -42,7 +40,6 @@ public static class CSVParser
                 locationRecords.Add(parseData);
             }
         }
-        Debug.Log("파싱 완료");
         return locationRecords;
     }
 }
