@@ -841,8 +841,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebce157c19572e469d15dcd2dfca054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DataFileName: DataFile
-  AnchorDataFileName: AnchorData.json
+  _anchorDatas: []
+  _dataFileName: DataFile
+  _anchorDataFileName: HideAndSeekTest.json
 --- !u!114 &1740553828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,6 +858,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrassPrefab: {fileID: 5792206072511832372, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
   ARAnchorManager: {fileID: 1658087068}
+  _anchorDataManager: {fileID: 0}
+  _grasses: []
 --- !u!1 &1765220381
 GameObject:
   m_ObjectHideFlags: 0
