@@ -7,7 +7,6 @@ namespace ARLocation
 {
     public class WebMapLoader : MonoBehaviour
     {
-
         public class DataEntry
         {
             public int id;
@@ -57,6 +56,8 @@ namespace ARLocation
         ///   If true, enable DebugMode on the `PlaceAtLocation` generated instances.
         /// </summary>
         public bool DebugMode;
+
+        public GameObject Destination;
 
         /// <summary>
         /// Returns a list of the `PlaceAtLocation` instances created by this compoonent.
@@ -149,6 +150,13 @@ namespace ARLocation
                                                                     location,
                                                                     PlacementOptions,
                                                                     DebugMode);
+                
+                Arrow arrow;
+                //생성된 오브젝트에 있는 Arrow 스크립트를 읽어와서 넣어준 Destination을 arrow.destination에 넣어 사용 가능하게 함
+                if (instance.TryGetComponent<Arrow>(out arrow))
+                {
+                    arrow.Destination = Destination;
+                }
 
                 _placeAtComponents.Add(instance.GetComponent<PlaceAtLocation>());
             }

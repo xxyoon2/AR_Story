@@ -26,7 +26,7 @@ public class DirectionsInfo : MonoBehaviour
         }
 
         // 목적지의 상태에 따라 버튼 ui의 색상을 바꿔주는 함수 실행
-        Invoke("ButtonColorChange");
+        Invoke("ButtonColorChange", 0f);
     }
 
     void ButtonColorChange()

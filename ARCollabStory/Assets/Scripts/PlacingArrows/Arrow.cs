@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RenderActiveByDistance : MonoBehaviour
+public class Arrow : MonoBehaviour
 {
     //활성화 또는 비활성화 할 거리
-    public float ActiveDistance = 0.1f;
+    public float ActiveDistance = 1.0f;
     private GameObject _mainCamera;
     private MeshRenderer _meshRenderer;
     private bool _isActive;
+    public GameObject Destination;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class RenderActiveByDistance : MonoBehaviour
 
     private void Start()
     {
+        gameObject.transform.LookAt(Destination.transform);
         _isActive = false;
         _meshRenderer.enabled = false;
     }

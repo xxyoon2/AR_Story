@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +17,19 @@ public enum TypeOfDestinationObject
 
 public class DestinationObject : MonoBehaviour
 {
-    public TypeOfDestinationObject TypeOfDestination;
     public float Distance = 0.01f;
+    public TypeOfDestinationObject ObjectType;
 
+    private bool _isActive;
+    private bool _isCloseToPlayer;
     private GameObject _mainCamera;
-    private bool _isActived;
-  
+
+    public bool IsCloseToPlayer
+    {
+        get { return _isCloseToPlayer;}
+        set { _isCloseToPlayer = value;}
+    }
+
     private void Awake()
     {
         _mainCamera = GameObject.Find("AR Camera");
@@ -31,18 +39,18 @@ public class DestinationObject : MonoBehaviour
     {
         double distanceToPlayer = Vector3.Distance(transform.position, _mainCamera.transform.position);
 
-        if(_isActived && distanceToPlayer < Distance)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-
-        //목적지와 플레이어와 거리가 가까워졌을 때 게임 상태 변형
-        //"목적지에 도착했을 때"를 얻는 것은 이 코드에서 하면 됨
         if (distanceToPlayer < Distance)
         {
-            Debug.Log("목적지에 도착함");
-            _isActived = true;
+            //도착했음을 알리는 이벤트 함수 필요 + 안에 DestinationObjectInfo() 추가
+            return;
         }
+    }
+
+    Tuple<bool,TypeOfDestinationObject> DestinationObjectInfo()
+    {
+        bool isCloseToPlayer = _isCloseToPlayer;
+        TypeOfDestinationObject objectType = ObjectType;
+        
+        return new Tuple<bool, TypeOfDestinationObject>(isCloseToPlayer, objectType);
     }
 }
