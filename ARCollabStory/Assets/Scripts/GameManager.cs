@@ -11,7 +11,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     public UnityEvent SetCSVData = new UnityEvent();
     private List<LocationRecord> _locationRecords;
 
-    // csv ÆÄ½ÌÇØ¼­ ÀúÀåÇÒ ¸®½ºÆ®
+    // csv íŒŒì‹±í•´ì„œ ì €ìž¥í•  ë¦¬ìŠ¤íŠ¸
     public List<LocationRecord> LocationRecords
     {
         get 
@@ -26,7 +26,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     void Start()
     {
-        Debug.Log("csv °®°í¿Í¶óÁ¦¹ß");
         _locationRecords = CSVParser.GetLocationInfos();
         SetCSVData.Invoke();
     }
