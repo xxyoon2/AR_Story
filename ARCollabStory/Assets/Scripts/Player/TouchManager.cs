@@ -20,15 +20,15 @@ public enum LayerMaskID
 
 public class TouchManager : MonoBehaviour, IInput
 {
-    private Ray ray;
-    private RaycastHit hit;
+    private Ray _ray;
+    private RaycastHit _hit;
     //private int layerMask;
     //private LayerMaskID layerMask;
 
-    private Touch touch;
-    private Vector2 tabPoint = new Vector2();
+    private Touch _touch;
+    private Vector2 _tabPoint = new Vector2();
 
-    public float distance = 5f;
+    public float _distance = 5f;
 
     void Update()
     {
@@ -37,15 +37,15 @@ public class TouchManager : MonoBehaviour, IInput
             return;
         }
 
-        touch = Input.GetTouch(0);
+        _touch = Input.GetTouch(0);
 
-        switch (touch.phase)
+        switch (_touch.phase)
         {
             case TouchPhase.Began:
                 Tab();
                 break;
             case TouchPhase.Moved:
-                if (tabPoint.x >= 1050)
+                if (_tabPoint.x >= 1050)
                 {
                     OpenBook();
                 }
@@ -79,14 +79,14 @@ public class TouchManager : MonoBehaviour, IInput
 
     public bool Tab(int layerMask)
     {
-        tabPoint = touch.position;
+        _tabPoint = _touch.position;
 
-        ray = Camera.main.ScreenPointToRay(touch.position);
+        _ray = Camera.main.ScreenPointToRay(_touch.position);
         //Debug.Log($"{touch.position}");
 
-        if (Physics.Raycast(ray, out hit, distance, layerMask))
+        if (Physics.Raycast(_ray, out _hit, _distance, layerMask))
         {
-            Debug.Log($"{hit.transform.gameObject}");
+            Debug.Log($"{_hit.transform.gameObject}");
             return true;
         }
         else
