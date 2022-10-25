@@ -1,5 +1,3 @@
-using CsvHelper;
-using CsvHelper.Configuration;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,35 +16,30 @@ public class LocationRecord
 }
 
 
-public class CSVParser
+public static class CSVParser
 {
     public static List<LocationRecord> GetLocationInfos()
     {
-        TextAsset locationTextAsset = Resources.Load<TextAsset>("Csv/LocationsInfo");
-
+        System.Collections.Generic.List<LocationRecord> list = new List<LocationRecord>();
+        TextAsset locationTextAsset = Resources.Load<TextAsset>("LocationsInfo");
         List<LocationRecord> locationRecords = new List<LocationRecord>();
         locationRecords.Add(null);
-
-        CsvConfiguration config = new CsvConfiguration(CultureInfo.InvariantCulture)
-        {
-            Delimiter = "|",
-            NewLine = Environment.NewLine
-        };
-
-
         using (StringReader csvString = new StringReader(locationTextAsset.text))
         {
-            using (CsvReader csv = new CsvReader(csvString, config))
+
+            while(csvString.Peek() > -1)
             {
-                IEnumerable<LocationRecord> records = csv.GetRecords<LocationRecord>();
-                foreach (LocationRecord record in records)
-                { 
-                    locationRecords.Add(record);
-                    Debug.Log("¿ì");
-                }
+                string stringData = csvString.ReadLine();
+                var dataValues = stringData.Split('|');
+                LocationRecord parseData = new LocationRecord();
+                if(int.TryParse(dataValues[0], out int intData)) parseData.DirectionIndex = int.Parse(dataValues[0]);
+                parseData.MissionTypeInfo = dataValues[1];
+                parseData.MissionStatus = dataValues[2];
+                if(double.TryParse(dataValues[3], out double doubleData1)) parseData.Latitude = double.Parse(dataValues[3]);
+                if(double.TryParse(dataValues[4], out double doubleData2)) parseData.Longuitude = double.Parse(dataValues[4]);
+                locationRecords.Add(parseData);
             }
         }
-
         return locationRecords;
     }
 }
