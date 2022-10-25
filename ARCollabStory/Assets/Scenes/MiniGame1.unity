@@ -627,7 +627,6 @@ GameObject:
   - component: {fileID: 1658087062}
   - component: {fileID: 1658087067}
   - component: {fileID: 1658087069}
-  - component: {fileID: 1658087068}
   - component: {fileID: 1658087070}
   m_Layer: 0
   m_Name: AR Camera
@@ -756,20 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f318f4fe3093ed46af93ca457595134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
---- !u!114 &1658087068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658087060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AnchorPrefab: {fileID: 0}
+  _distance: 5
 --- !u!114 &1658087069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1658087061}
 --- !u!114 &1658087070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 8551167450670682915, guid: d3160fa028f5a9648b4038de6ecef90f, type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 1
 --- !u!1 &1740553825
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +794,8 @@ GameObject:
   - component: {fileID: 1740553826}
   - component: {fileID: 1740553827}
   - component: {fileID: 1740553828}
+  - component: {fileID: 1740553830}
+  - component: {fileID: 1740553829}
   m_Layer: 0
   m_Name: Grass Spawner
   m_TagString: Untagged
@@ -841,9 +829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebce157c19572e469d15dcd2dfca054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anchorDatas: []
-  _dataFileName: DataFile
-  _anchorDataFileName: HideAndSeekTest.json
 --- !u!114 &1740553828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,9 +842,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrassPrefab: {fileID: 5792206072511832372, guid: 07190a8c36b6f5646b3e893684dfb891, type: 3}
-  ARAnchorManager: {fileID: 1658087068}
-  _anchorDataManager: {fileID: 0}
-  _grasses: []
+--- !u!114 &1740553829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740553825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AnchorPrefab: {fileID: 0}
+--- !u!114 &1740553830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740553825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 1658087061}
 --- !u!1 &1765220381
 GameObject:
   m_ObjectHideFlags: 0
