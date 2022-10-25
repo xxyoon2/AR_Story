@@ -180,6 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70097077}
   - component: {fileID: 70097078}
+  - component: {fileID: 70097079}
   m_Layer: 0
   m_Name: DestinationObject3
   m_TagString: Untagged
@@ -223,7 +224,7 @@ MonoBehaviour:
         Longitude: 127.1217148266656
         Altitude: 0
         AltitudeMode: 0
-        Label: 
+        Label: MinigameStartPoint
       OverrideAltitudeData:
         OverrideAltitude: 0
         Altitude: 0
@@ -241,6 +242,20 @@ MonoBehaviour:
   ObjectPositionUpdated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &70097079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70097076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34073ce5b1b867b4da1290c9735e5e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 0.01
+  ObjectType: 2
 --- !u!1001 &93800206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686390369}
   - component: {fileID: 686390370}
+  - component: {fileID: 686390371}
   m_Layer: 0
   m_Name: DestinationObject2
   m_TagString: Untagged
@@ -485,7 +501,7 @@ MonoBehaviour:
         Longitude: 127.12191994677079
         Altitude: 0
         AltitudeMode: 0
-        Label: 
+        Label: Quest2StartPoint
       OverrideAltitudeData:
         OverrideAltitude: 0
         Altitude: 0
@@ -503,6 +519,20 @@ MonoBehaviour:
   ObjectPositionUpdated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &686390371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686390368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34073ce5b1b867b4da1290c9735e5e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 0.01
+  ObjectType: 0
 --- !u!1 &770475711
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770475712}
   - component: {fileID: 770475713}
+  - component: {fileID: 770475714}
   m_Layer: 0
   m_Name: DestinationObject1
   m_TagString: Untagged
@@ -556,7 +587,7 @@ MonoBehaviour:
         Longitude: 127.12377305813641
         Altitude: 0
         AltitudeMode: 0
-        Label: 
+        Label: Quest1StartPoint
       OverrideAltitudeData:
         OverrideAltitude: 0
         Altitude: 0
@@ -574,6 +605,20 @@ MonoBehaviour:
   ObjectPositionUpdated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &770475714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770475711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34073ce5b1b867b4da1290c9735e5e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 0.01
+  ObjectType: 0
 --- !u!1 &1079181163
 GameObject:
   m_ObjectHideFlags: 0

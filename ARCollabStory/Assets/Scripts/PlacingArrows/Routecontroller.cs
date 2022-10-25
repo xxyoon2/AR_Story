@@ -21,11 +21,12 @@ public class RouteController : MonoBehaviour
 
     private void Start()
     {
-        StartRoute.SetActive(false);
-        Secondroute.SetActive(false);
-        ThirdRoute.SetActive(false);
+        //프로토타입에서는 주석 해제 할 것
+        //StartRoute.SetActive(false);
+        //Secondroute.SetActive(false);
+        //ThirdRoute.SetActive(false);
     }
-    
+
     /// <summary>
     /// 루트를 키는 함수
     /// 0 :시작루트, 1: 두번째 루트, 2: 세번째 루트

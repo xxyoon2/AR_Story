@@ -41,11 +41,13 @@ public class DestinationObject : MonoBehaviour
 
         if (distanceToPlayer < Distance)
         {
-            //도착했음을 알리는 이벤트 함수 필요 + 안에 DestinationObjectInfo() 추가
+            //도착했음을 알리는 이벤트 함수 필요 + DestinationObjectInfo()의 반환값을 받아야 함
+            //반환되는 목적지의 타입에 따라 미니 퀘스트, 미니 게임 등을 실행하도록 만들 수 있음
             return;
         }
     }
 
+    //목적지 오브젝트의 타입과 도착한적이 있는지, 없는지를 판별하는 bool값을 반환하는 함수
     Tuple<bool,TypeOfDestinationObject> DestinationObjectInfo()
     {
         bool isCloseToPlayer = _isCloseToPlayer;

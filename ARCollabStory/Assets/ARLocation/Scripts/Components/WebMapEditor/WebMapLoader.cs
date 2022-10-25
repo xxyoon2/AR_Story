@@ -57,6 +57,9 @@ namespace ARLocation
         /// </summary>
         public bool DebugMode;
 
+        /// <summary>
+        /// 화살표가 가리켜야 할 목적지 오브젝트
+        /// </summary>
         public GameObject Destination;
 
         /// <summary>
