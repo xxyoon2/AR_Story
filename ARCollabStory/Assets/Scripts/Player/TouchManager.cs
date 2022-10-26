@@ -86,6 +86,7 @@ public class TouchManager : MonoBehaviour, IInput
 
         if (Physics.Raycast(_ray, out _hit, _distance, layerMask))
         {
+            _hit.transform.GetComponent<Grass>()?.Catch();
             Debug.Log($"{_hit.transform.gameObject}");
             return true;
         }
