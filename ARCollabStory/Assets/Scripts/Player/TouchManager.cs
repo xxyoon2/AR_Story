@@ -88,6 +88,7 @@ public class TouchManager : MonoBehaviour, IInput
         {
             _hit.transform.GetComponent<Grass>()?.Catch();
             _hit.transform.GetComponent<NPC>()?.Talk();
+            _hit.transform.GetComponent<QuestObject>()?.Catch();
             Debug.Log($"{_hit.transform.gameObject}");
             return true;
         }
