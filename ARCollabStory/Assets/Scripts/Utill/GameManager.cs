@@ -7,8 +7,9 @@ using UnityEngine.Events;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
-    public UnityEvent DirectionsStatusUpdate = new UnityEvent();
+    public UnityEvent<int> DirectionsStatusUpdate = new UnityEvent<int>();
     public UnityEvent SetCSVData = new UnityEvent();
+    public UnityEvent<int> SetVisibleQuestArea = new UnityEvent<int>();
     private List<LocationRecord> _locationRecords;
 
     // csv 파싱해서 저장할 리스트
@@ -37,8 +38,13 @@ public class GameManager : SingletonBehaviour<GameManager>
         SetCSVData.Invoke();
     }
 
-    public void StatusUpdateAlarm()
+    public void StatusUpdateAlarm(int index)
     {
-        DirectionsStatusUpdate.Invoke();
+        DirectionsStatusUpdate.Invoke(index);
+    }
+
+    public void AlarmQuestAreaInfo(int index)
+    {
+        SetVisibleQuestArea.Invoke(index);
     }
 }
