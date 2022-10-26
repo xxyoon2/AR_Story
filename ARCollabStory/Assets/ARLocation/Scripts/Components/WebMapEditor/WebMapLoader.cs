@@ -153,10 +153,9 @@ namespace ARLocation
                                                                     location,
                                                                     PlacementOptions,
                                                                     DebugMode);
-                
-                Arrow arrow;
+
                 //생성된 오브젝트에 있는 Arrow 스크립트를 읽어와서 넣어준 Destination을 arrow.destination에 넣어 사용 가능하게 함
-                if (instance.TryGetComponent<Arrow>(out arrow))
+                if (instance.TryGetComponent<Arrow>(out Arrow arrow))
                 {
                     arrow.Destination = Destination;
                 }

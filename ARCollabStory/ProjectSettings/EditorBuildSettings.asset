@@ -5,18 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/DetectPlanes.unity
-    guid: 8aaf4168ea13b364393652094d688b3b
-  - enabled: 0
-    path: Assets/Samples/ARCore Extensions/1.34.0/Geospatial Sample/Scenes/Geospatial.unity
-    guid: 1ed15e9657253406185e4b2c7c5a4fc4
   - enabled: 1
     path: Assets/Scenes/PlacingArrow.unity
     guid: 532d6e7c6d219194e9dd7e73f353288e
-  - enabled: 1
-    path: Assets/Scenes/Map.unity
-    guid: d5e22e070cf00ba40bdc95bdcfa8c7a6
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 1f87bf8a67031dd4cb7ae9c3d9024c9d, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: d094f165f8c89074c8588d22d1360f90, type: 2}
