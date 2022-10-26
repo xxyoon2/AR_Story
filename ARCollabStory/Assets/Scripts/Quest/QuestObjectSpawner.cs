@@ -13,6 +13,10 @@ public class QuestObjectSpawner : MonoBehaviour
     private AnchorDataManager _anchorDataManager;
     private GameObject[] _questObjects;
 
+    private int _objectCatchCount = 0;
+    private int _objectMaxCount;
+    private bool _questComplete = false;
+
     private void Awake()
     {
         _arAnchorManager = GetComponent<ARAnchorManager>();
@@ -20,6 +24,14 @@ public class QuestObjectSpawner : MonoBehaviour
 
         _anchorDataManager.Load(JsonFileName);
         Create();
+    }
+
+    private void Update()
+    {
+        if (_questComplete)
+        {
+            // 여기에 다른 곳으로 넘어가는 무언가 넣기
+        }
     }
 
     /// <summary>
@@ -36,6 +48,7 @@ public class QuestObjectSpawner : MonoBehaviour
         }
 
         _questObjects = new GameObject[anchorCount];
+        _objectMaxCount = anchorCount;
 
         for (int i = 0; i < anchorCount; i++)
         {
@@ -47,6 +60,19 @@ public class QuestObjectSpawner : MonoBehaviour
             _questObjects[i] = Instantiate(QuestObjectPrefab, arCloudAnchor.transform);
             // 잡을 때마다 관리하기 위해 parent로 세팅
             _questObjects[i].transform.parent = gameObject.transform;
+        }
+    }
+
+    /// <summary>
+    /// 오브젝트를 잡을 때마다 count를 세주는 메서드
+    /// </summary>
+    public void CatchQuestObject()
+    {
+        _objectCatchCount++;
+        if (_objectCatchCount == _objectMaxCount)
+        {
+            _questComplete = true;
+            Debug.Log("끝");
         }
     }
 }

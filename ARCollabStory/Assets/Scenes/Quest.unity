@@ -211,6 +211,132 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 1964325971}
+--- !u!1001 &482391555
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3060135924145752144, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1964325971}
+    - target: {fileID: 3060135924145752148, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_Name
+      value: Quest1ObjectSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+--- !u!1001 &805728376
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3060135924145752144, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1964325971}
+    - target: {fileID: 3060135924145752148, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_Name
+      value: Quest2ObjectSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752149, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060135924145752150, guid: 778b09b3082f2e449b190b624b057581, type: 3}
+      propertyPath: JsonFileName
+      value: story2_m_02_1_.json
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 778b09b3082f2e449b190b624b057581, type: 3}
 --- !u!1 &1272243830
 GameObject:
   m_ObjectHideFlags: 0

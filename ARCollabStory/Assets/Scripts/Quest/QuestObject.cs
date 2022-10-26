@@ -6,6 +6,7 @@ public class QuestObject : MonoBehaviour
 {
     public void Catch()
     {
+        GetComponentInParent<QuestObjectSpawner>().CatchQuestObject();
         gameObject.SetActive(false);
     }
 }
