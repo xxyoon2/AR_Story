@@ -14,6 +14,7 @@ public class GrassSpawner : MonoBehaviour
 
     private int _grassNowCount = 0;
     private int _grassMaxCount;
+    private int _grassCatchCount;
 
     private bool[] _isUsed;
     private Queue<int> _randomIndexQueue = new Queue<int>();
@@ -70,6 +71,8 @@ public class GrassSpawner : MonoBehaviour
 
             // 앵커 위치에 풀덩이 생성
             _grasses[i] = Instantiate(GrassPrefab, arCloudAnchor.transform);
+            // 풀덩이를 잡을 때마다 관리하기 위해 parent로 세팅
+            _grasses[i].transform.parent = gameObject.transform;
             _grasses[i].SetActive(false);
         }
 
@@ -144,5 +147,17 @@ public class GrassSpawner : MonoBehaviour
         }
 
         StopCoroutine(AppearAfter());
+    }
+
+    /// <summary>
+    /// 풀덩이를 잡을 때마다 count를 세주는 메서드
+    /// </summary>
+    public void CatchGrass()
+    {
+        _grassCatchCount++;
+        if (_grassCatchCount == _grassMaxCount)
+        {
+            Debug.Log("다 잡았다");
+        }
     }
 }
