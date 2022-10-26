@@ -26,13 +26,11 @@ public class DirectionsInfo : MonoBehaviour
     /// <param name="indexInfo">맵에 표시할 범위 인덱스</param>
     public void SetActiveQuestArea(int indexInfo)
     {
-        Debug.Log($"{_directionAreas[indexInfo].name}");
         _directionAreas[indexInfo].gameObject.SetActive(true);
     }
 
     void SetInfoObjects()
     {
-        Debug.Log($"LocationRecords is exist? {GameManager.Instance.LocationRecords != null}");
         for(int i = 0; i < _areaCount; i++)
         {
             _directionAreas[i].OrderIndex = GameManager.Instance.LocationRecords[i + 1].DirectionIndex;
@@ -40,7 +38,6 @@ public class DirectionsInfo : MonoBehaviour
             _directionAreas[i].DirectionStatus = GameManager.Instance.LocationRecords[i + 1].MissionStatus;
             // 목적지 정보가 퀘스트 구역(수행 범위를 표시하기 위한 ui)일 시 비활성화
 
-            Debug.Log($"{_directionAreas[i].name}, {GameManager.Instance.LocationRecords[i + 1].DirectionIndex}");
             GameManager.Instance.StatusUpdateAlarm(i);
             if (_directionAreas[i].MissionType == "QuestArea")
             {
@@ -51,9 +48,7 @@ public class DirectionsInfo : MonoBehaviour
 
     void UpdateDirectionsStatus(int index)
     {
-        Debug.Log("왔");
         _directionAreas[index].DirectionStatus = GameManager.Instance.LocationRecords[index + 1].MissionStatus;
-        Debug.Log($"{_directionAreas[index].DirectionStatus}");
         _directionAreas[index].ChangeColor();
     }
 }
