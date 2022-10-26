@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class LocationRecord
 {
@@ -20,6 +21,20 @@ public class DialogueRecord
     public int Index { get; set; }
     public string Name { get; set; }
     public string Dialogue { get; set; }
+}
+
+public class BookRecord
+{
+    public int Page { get; set; }
+    public int Index { get; set; }
+    public string Story { get; set; }
+}
+
+public class PuzzleRecord
+{
+    public string PuzzleStory { get; set; }
+    public string PuzzleInfo { get; set; }
+    public int PuzzleIndex { get; set; }
 }
 
 
@@ -69,5 +84,48 @@ public static class CSVParser
             }
         }
         return dialogues;
+    }
+
+    public static (List<BookRecord>, List<PuzzleRecord>) GetBookInfos()
+    {
+        TextAsset storyTextAsset = Resources.Load<TextAsset>("StoryInfo");
+        List<BookRecord> stories = new List<BookRecord>();
+        List<PuzzleRecord> puzzles = new List<PuzzleRecord>();
+        stories.Add(null);
+        puzzles.Add(null);
+        using (StringReader csvString = new StringReader(storyTextAsset.text))
+        {
+            while(csvString.Peek() > -1)
+            {
+                string stringData = csvString.ReadLine();
+                var dataValues = stringData.Split('|');
+                BookRecord bookData = new BookRecord();
+
+                if (dataValues[2][0] == '\'')
+                {
+                    PuzzleRecord puzzleData = new PuzzleRecord();
+
+                    if (int.TryParse(dataValues[4], out int puzzleIndexData)) puzzleData.PuzzleIndex = int.Parse(dataValues[4]);
+                    puzzleData.PuzzleInfo = dataValues[3];
+                    puzzleData.PuzzleStory = dataValues[2].Trim('\'');
+                    string mosaicText = "";
+                    int puzzleLength = puzzleData.PuzzleStory.Length;
+                    for(int i = 1; i < puzzleLength; i++)
+                    {
+                        mosaicText += "0";
+                    }
+                    bookData.Story = mosaicText;
+
+                    puzzles.Add(puzzleData);
+                    Debug.Log($"{puzzleData.PuzzleStory}");
+                }
+                if (int.TryParse(dataValues[0], out int pageData)) bookData.Page = int.Parse(dataValues[0]);
+                if (int.TryParse(dataValues[1], out int indexData)) bookData.Index = int.Parse(dataValues[1]);
+                if (bookData.Story == null) bookData.Story = dataValues[2]; 
+                stories.Add(bookData);
+                Debug.Log($"{bookData.Story}");
+            }
+        }
+        return (stories, puzzles);
     }
 }
