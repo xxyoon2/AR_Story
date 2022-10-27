@@ -61,6 +61,7 @@ public static class CSVParser
                 locationRecords.Add(parseData);
             }
         }
+        locationRecords.Remove(null);
         return locationRecords;
     }
 
@@ -117,13 +118,11 @@ public static class CSVParser
                     bookData.Story = mosaicText;
 
                     puzzles.Add(puzzleData);
-                    Debug.Log($"{puzzleData.PuzzleStory}");
                 }
                 if (int.TryParse(dataValues[0], out int pageData)) bookData.Page = int.Parse(dataValues[0]);
                 if (int.TryParse(dataValues[1], out int indexData)) bookData.Index = int.Parse(dataValues[1]);
                 if (bookData.Story == null) bookData.Story = dataValues[2]; 
                 stories.Add(bookData);
-                Debug.Log($"{bookData.Story}");
             }
         }
         return (stories, puzzles);
