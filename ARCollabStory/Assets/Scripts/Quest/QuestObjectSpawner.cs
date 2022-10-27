@@ -23,7 +23,6 @@ public class QuestObjectSpawner : MonoBehaviour
         _anchorDataManager = GetComponent<AnchorDataManager>();
 
         _anchorDataManager.Load(JsonFileName);
-        Create();
     }
 
     private void Update()
@@ -61,6 +60,8 @@ public class QuestObjectSpawner : MonoBehaviour
             // 잡을 때마다 관리하기 위해 parent로 세팅
             _questObjects[i].transform.parent = gameObject.transform;
         }
+
+        Debug.Log("생성 완료");
     }
 
     /// <summary>

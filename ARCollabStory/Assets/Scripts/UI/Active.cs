@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Active : MonoBehaviour
 {
-    public GameObject ActiveObject;
+    public QuestObjectSpawner QuestObjectSpawner;
 
     public void Click()
     {
-        ActiveObject.SetActive(true);
+        QuestObjectSpawner.Create();
     }
 }
