@@ -71,8 +71,6 @@ public class GrassSpawner : MonoBehaviour
 
             // 앵커 위치에 풀덩이 생성
             _grasses[i] = Instantiate(GrassPrefab, arCloudAnchor.transform);
-            // 풀덩이를 잡을 때마다 관리하기 위해 parent로 세팅
-            _grasses[i].transform.parent = gameObject.transform;
             _grasses[i].SetActive(false);
         }
 

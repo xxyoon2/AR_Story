@@ -49,7 +49,7 @@ public class QuestObjectSpawner : MonoBehaviour
         _questObjects = new GameObject[anchorCount];
         _objectMaxCount = anchorCount;
 
-        for (int i = 0; i < anchorCount; i++)
+        for (int i = 0; i < anchorCount; i++)               
         {
             // anchorID를 사용해 arCloudAnchor 반환
             string anchorID = _anchorDataManager.GetAnchorID(i);
@@ -57,8 +57,6 @@ public class QuestObjectSpawner : MonoBehaviour
 
             // 앵커 위치에 생성
             _questObjects[i] = Instantiate(QuestObjectPrefab, arCloudAnchor.transform);
-            // 잡을 때마다 관리하기 위해 parent로 세팅
-            _questObjects[i].transform.parent = gameObject.transform;
         }
 
         Debug.Log("생성 완료");
