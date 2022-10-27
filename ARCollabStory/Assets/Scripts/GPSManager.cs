@@ -7,8 +7,9 @@ using UnityEngine.Events;
 
 public class GPSManager : SingletonBehaviour<GPSManager>
 {
-    public float latitude;
-    public float longitude;
+    private float latitude;
+    private float longitude;
+
     public UnityEvent<float, float> SetMapImage = new UnityEvent<float, float>();
 
     private bool _isRunning = true;
@@ -19,7 +20,7 @@ public class GPSManager : SingletonBehaviour<GPSManager>
         StartCoroutine(StartLocationService());
     }
 
-    private IEnumerator StartLocationService()
+    public IEnumerator StartLocationService()
     {
 
 #if UNITY_EDITOR
