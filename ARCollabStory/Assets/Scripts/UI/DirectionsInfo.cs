@@ -18,6 +18,8 @@ public class DirectionsInfo : MonoBehaviour
         // 목적지의 수만큼 위치 정보를 담을 배열 생성
         _areaCount = transform.childCount;
         _directionAreas = GetComponentsInChildren<Locations>();
+
+        SetInfoObjects();
     }
 
     /// <summary>

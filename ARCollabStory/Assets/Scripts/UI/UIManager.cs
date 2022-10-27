@@ -18,6 +18,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField]
     Button closeButton;
 
+    [Header("UI")]
+    [SerializeField]
+    GameObject MapUI;
+
     void Start()
     {
         openStoryBookButton.onClick.AddListener(OpenStoryBook);
@@ -34,11 +38,15 @@ public class UIManager : SingletonBehaviour<UIManager>
     private void OpenMap()
     {
         ActiveButtons(false);
+        MapUI.SetActive(true);
+        StartCoroutine(GPSManager.Instance.StartLocationService());
     }
 
     private void GoBack()
     {
         ActiveButtons(true);
+        MapUI.SetActive(false);
+        StopCoroutine(GPSManager.Instance.StartLocationService());
     }
 
     private void QuitGame()
