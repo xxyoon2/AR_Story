@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +8,12 @@ public class GrassSpawnButton : MonoBehaviour
     public GrassSpawner GrassSpawner;
 
     /// <summary>
-    /// Å×½ºÆ®¿ë ¸Ş¼­µå
-    /// ½ÇÁ¦·Î´Â ¹öÆ°À» ´­·¯¼­ ¼ÒÈ¯µÇÁö ¾ÊÀ½
+    /// í…ŒìŠ¤íŠ¸ìš© ë©”ì„œë“œ
+    /// ì‹¤ì œë¡œëŠ” ë²„íŠ¼ì„ ëˆŒëŸ¬ì„œ ì†Œí™˜ë˜ì§€ ì•ŠìŒ
     /// </summary>
     public void Click()
     {
-        AnchorDataManager.Load("HideAndSeekTest.json");
+        AnchorDataManager.Load("story2_l_01_1â€‹.json");
         GrassSpawner.Create();
     }
 }
