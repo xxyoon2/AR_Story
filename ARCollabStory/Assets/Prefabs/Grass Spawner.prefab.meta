@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:ARCollabStory/Assets/Prefabs/AssetPrefabs.meta
+guid: da3428f46c9ee13429906b2a8ac5b4a5
+folderAsset: yes
+DefaultImporter:
+========
 guid: 6e311fa0d417e3340953c3f3ed32341d
 PrefabImporter:
+>>>>>>>> Develop:ARCollabStory/Assets/Prefabs/Grass Spawner.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

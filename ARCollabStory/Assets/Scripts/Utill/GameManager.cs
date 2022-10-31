@@ -10,13 +10,26 @@ public class GameManager : SingletonBehaviour<GameManager>
     public UnityEvent<int> DirectionsStatusUpdate = new UnityEvent<int>();
     public UnityEvent SetCSVData = new UnityEvent();
     public UnityEvent<int> SetVisibleQuestArea = new UnityEvent<int>();
-    private List<LocationRecord> _locationRecords;
+    public UnityEvent ChangeStatus = new UnityEvent();
 
-    private LocationRecord _currentDestination;
-    public LocationRecord CurrentDestination
+
+    private List<LocationRecord> _locationRecords;
+    private DestinationsBehaviour _currentDestination;
+    public DestinationsBehaviour CurrentDestination
     {
         get { return _currentDestination; }
-        set { _currentDestination = value; }
+        set 
+        {
+            _currentDestination = value;
+            Debug.Log($"{_currentDestination.name} 거리측정 시작");
+            _currentDestination.StartCheckingDistance(_playerPos);
+        }
+    }
+    private Vector3 _playerPos;
+    public Vector3 PlayerPos
+    {
+        get { return _playerPos; }
+        set { _playerPos = value; }
     }
 
     // csv 파싱해서 저장할 리스트

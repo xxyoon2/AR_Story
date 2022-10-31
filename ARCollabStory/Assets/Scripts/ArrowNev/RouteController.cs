@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RouteController : MonoBehaviour
 {
-    private GameObject Stage1Routes;
     //Stage1에 있는 루트들
     private GameObject StartRoute;
     private GameObject Secondroute;
@@ -12,16 +11,14 @@ public class RouteController : MonoBehaviour
 
     private void Awake()
     {
-        Stage1Routes = GameObject.Find("Stage1Routes");
-
-        StartRoute = Stage1Routes.GetComponent<Transform>().GetChild(0).gameObject;
-        Secondroute = Stage1Routes.GetComponent<Transform>().GetChild(1).gameObject;
-        ThirdRoute = Stage1Routes.GetComponent<Transform>().GetChild(2).gameObject;
+        StartRoute = transform.GetChild(0).gameObject;
+        Secondroute = transform.GetChild(1).gameObject;
+        ThirdRoute = transform.GetChild(2).gameObject;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        //프로토타입에서는 주석 해제 할 것
+        //프로토타입 이후 주석 해제할 것
         //StartRoute.SetActive(false);
         //Secondroute.SetActive(false);
         //ThirdRoute.SetActive(false);
@@ -29,20 +26,19 @@ public class RouteController : MonoBehaviour
 
     /// <summary>
     /// 루트를 키는 함수
-    /// 0 :시작루트, 1: 두번째 루트, 2: 세번째 루트
     /// </summary>
-    /// <param name="routeNum"></param>
-    public void OnRoute(int routeNum)
+    /// <param name="RouteName"></param>
+    public void OnRoute(string RouteName)
     {
-        switch(routeNum)
+        switch(RouteName)
         {
-            case 0:
+            case "StartRoute":
                 StartRoute.SetActive(true);
                 break;
-            case 1:
+            case "Secondroute":
                 Secondroute.SetActive(true);
                 break;
-            case 2:
+            case "ThirdRoute":
                 ThirdRoute.SetActive(true);
                 break;
         }
@@ -50,20 +46,19 @@ public class RouteController : MonoBehaviour
 
     /// <summary>
     /// 루트를 끄는 함수
-    /// 0 :시작루트, 1: 두번째 루트, 2: 세번째 루트
     /// </summary>
-    /// <param name="routeNum"></param>
-    public void OffRoute(int routeNum)
+    /// <param name="RouteName"></param>
+    public void OffRoute(string RouteName)
     {
-        switch (routeNum)
+        switch (RouteName)
         {
-            case 0:
+            case "StartRoute":
                 StartRoute.SetActive(false);
                 break;
-            case 1:
+            case "Secondroute":
                 Secondroute.SetActive(false);
                 break;
-            case 2:
+            case "ThirdRoute":
                 ThirdRoute.SetActive(false);
                 break;
         }
