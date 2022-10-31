@@ -12,6 +12,13 @@ public class GameManager : SingletonBehaviour<GameManager>
     public UnityEvent<int> SetVisibleQuestArea = new UnityEvent<int>();
     private List<LocationRecord> _locationRecords;
 
+    private LocationRecord _currentDestination;
+    public LocationRecord CurrentDestination
+    {
+        get { return _currentDestination; }
+        set { _currentDestination = value; }
+    }
+
     // csv 파싱해서 저장할 리스트
     public List<LocationRecord> LocationRecords
     {

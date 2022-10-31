@@ -6,7 +6,7 @@ using TMPro;
 public class Dialogue : MonoBehaviour
 {
     private TextMeshProUGUI _ui;
-    private int _dialogueIndex = 1;
+    private int _dialogueIndex = 0;
     private List<DialogueRecord> _records;
     
     void Awake()
