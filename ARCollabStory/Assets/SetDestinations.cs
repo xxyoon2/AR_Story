@@ -38,9 +38,12 @@ public class SetDestinations : MonoBehaviour
     // 진행중이던 목적지 상태를 완료로 바꾸고 다음 목적지를 진행중으로 변경, 코드 수정 가능성 o
     void ChangeStatus()
     {
-        GameManager.Instance.LocationRecords[currentIndex].MissionStatus = "Done";
-        GameManager.Instance.LocationRecords[currentIndex + 1].MissionStatus = "InProgress";
-        GameManager.Instance.StatusUpdateAlarm(currentIndex - 1);
-        GameManager.Instance.StatusUpdateAlarm(currentIndex);
+        if (GameManager.Instance.LocationRecords[currentIndex].MissionStatus != "Done")
+        {
+            GameManager.Instance.LocationRecords[currentIndex].MissionStatus = "Done";
+            GameManager.Instance.LocationRecords[currentIndex + 1].MissionStatus = "InProgress";
+            GameManager.Instance.StatusUpdateAlarm(currentIndex - 1);
+            GameManager.Instance.StatusUpdateAlarm(currentIndex);
+        }
     }
 }
