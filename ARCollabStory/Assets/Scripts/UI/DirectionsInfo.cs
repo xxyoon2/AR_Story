@@ -36,12 +36,11 @@ public class DirectionsInfo : MonoBehaviour
         for(int i = 0; i < _areaCount; i++)
         {
             _directionAreas[i].OrderIndex = GameManager.Instance.LocationRecords[i + 1].DirectionIndex;
-            _directionAreas[i].MissionType = GameManager.Instance.LocationRecords[i + 1].MissionTypeInfo;
             _directionAreas[i].DirectionStatus = GameManager.Instance.LocationRecords[i + 1].MissionStatus;
             // 목적지 정보가 퀘스트 구역(수행 범위를 표시하기 위한 ui)일 시 비활성화
 
             GameManager.Instance.StatusUpdateAlarm(i);
-            if (_directionAreas[i].MissionType == "QuestArea")
+            if (GameManager.Instance.LocationRecords[i + 1].MissionTypeInfo == "QuestArea")
             {
                 _directionAreas[i].gameObject.SetActive(false);
             }

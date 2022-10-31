@@ -46,7 +46,6 @@ public class CSVMethods
             return int.Parse(dataValue);
         }
 
-        Debug.LogError("int 데이터 파싱 실패");
         return -1;
     }
 
@@ -57,7 +56,6 @@ public class CSVMethods
             return double.Parse(dataValue);
         }
 
-        Debug.LogError("double 데이터 파싱 실패");
         return -1;
     }
 }
