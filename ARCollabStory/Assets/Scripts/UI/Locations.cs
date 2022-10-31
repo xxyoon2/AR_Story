@@ -7,6 +7,7 @@ public class Locations : MonoBehaviour
 {
     // 각각의 목적지를 csv데이터와 연동하고 상태를 저장하는 스크립트
     private int _orderIndex;
+    private string _previousStatus;
     public int OrderIndex
     {
         get { return _orderIndex; }
@@ -43,7 +44,8 @@ public class Locations : MonoBehaviour
     /// </summary>
     public void ChangeColor()
     {
-        switch(_directionStatus)
+        _previousStatus = _directionStatus;
+        switch (_directionStatus)
         {
             case "NotStarted":
                 _image.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
@@ -52,9 +54,10 @@ public class Locations : MonoBehaviour
             case "InProgress":
                 _image.color = new Color(0, 0, 1);
                 _canInteract = true;
+                GameManager.Instance.CurrentDestination = GameManager.Instance.LocationRecords[_orderIndex];
                 break;
             case "Done":
-                _image.color = new Color(1, 0, 0);
+                _image.color = new Color(1, 0, 0, 0.5f);
                 _canInteract = true;
                 Debug.Log($"{_missionType}");
                 if(_missionType == "Quest" || _missionType == "Minigame")
@@ -71,7 +74,7 @@ public class Locations : MonoBehaviour
     /// </summary>
     public void OnClick()
     {
-        if(_canInteract)
+        if(_canInteract && _directionStatus == "InProgress")
         {
             // 상호작용 가능한 버튼일 시 클릭 후 실행될 내용을 여기에 작성
             ChangeStatusDone();
