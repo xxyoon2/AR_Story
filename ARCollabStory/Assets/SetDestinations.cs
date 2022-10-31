@@ -7,18 +7,15 @@ public class SetDestinations : MonoBehaviour
 {
     private DestinationsBehaviour[] destinations;
     private int currentIndex;
-    private int destinationCount;
+    
     void Start()
     {
-        destinationCount = transform.childCount;
+        int destinationCount = transform.childCount;
         destinations = new DestinationsBehaviour[destinationCount];
         GameManager.Instance.DirectionsStatusUpdate.AddListener(RenewalStatus);
         GameManager.Instance.ChangeStatus.AddListener(ChangeStatus);
-        Invoke("Initializing", 0.5f);
-    }
-
-    void Initializing()
-    {
+        
+        // 목적지 오브젝트들 받아오고 각각 csv 파일의 미션타입과 연동
         for (int i = 0; i < destinationCount; i++)
         {
             destinations[i] = transform.GetChild(i).GetComponent<DestinationsBehaviour>();
@@ -27,6 +24,7 @@ public class SetDestinations : MonoBehaviour
         }
     }
 
+    // 각 목적지의 진행 상황에 따라 현 목적지 변경
     void RenewalStatus(int index)
     {
         destinations[index].MissionStatus = GameManager.Instance.LocationRecords[index + 1].MissionStatus;
@@ -37,6 +35,7 @@ public class SetDestinations : MonoBehaviour
         }
     }
 
+    // 진행중이던 목적지 상태를 완료로 바꾸고 다음 목적지를 진행중으로 변경, 코드 수정 가능성 o
     void ChangeStatus()
     {
         GameManager.Instance.LocationRecords[currentIndex].MissionStatus = "Done";
