@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using Google.XR.ARCoreExtensions;
 
-//∏Ò¿˚¡ˆ ø¿∫Í¡ß∆Æ¿« ≈∏¿‘¿ª ±∏∫∞«œ±‚ ¿ß«‘
-
 public class DestinationsBehaviour : MonoBehaviour
 {
     [SerializeField]
@@ -36,7 +34,7 @@ public class DestinationsBehaviour : MonoBehaviour
         float distance = Vector3.Distance(transform.position, _playerPos);
         if (distance < 0.5f)
         {
-            Debug.Log($"{_missionType} ∏Ò¿˚¡ˆ µµ¬¯");
+            Debug.Log($"{_missionType} Î™©Ï†ÅÏßÄ ÎèÑÏ∞©");
             GameManager.Instance.ChangeStatus.Invoke();
             yield break;
         }
