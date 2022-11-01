@@ -41,8 +41,8 @@ public class DestinationsBehaviour : MonoBehaviour
                 GameManager.Instance.ChangeStatus.Invoke();
                 yield break;
             }
-        yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitForSeconds(0.5f);
         }
-
     }
 }
