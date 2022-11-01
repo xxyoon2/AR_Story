@@ -31,13 +31,18 @@ public class DestinationsBehaviour : MonoBehaviour
     }
     private IEnumerator CheckDistance(Vector3 _playerPos)
     {
-        float distance = Vector3.Distance(transform.position, _playerPos);
-        if (distance < 0.5f)
+        while(true)
         {
-            Debug.Log($"{_missionType} 목적지 도착");
-            GameManager.Instance.ChangeStatus.Invoke();
-            yield break;
+            float distance = Vector3.Distance(transform.position, _playerPos);
+            Debug.Log($"{distance}");
+            if (distance < 0.5f)
+            {
+                Debug.Log($"{_missionType} 목적지 도착");
+                GameManager.Instance.ChangeStatus.Invoke();
+                yield break;
+            }
+            
+            yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(0.5f);
     }
 }
