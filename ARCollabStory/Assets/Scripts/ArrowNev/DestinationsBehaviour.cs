@@ -34,6 +34,7 @@ public class DestinationsBehaviour : MonoBehaviour
         while(true)
         {
             float distance = Vector3.Distance(transform.position, _playerPos);
+            Debug.Log($"{distance}");
             if (distance < 0.5f)
             {
                 Debug.Log($"{_missionType} 목적지 도착");
