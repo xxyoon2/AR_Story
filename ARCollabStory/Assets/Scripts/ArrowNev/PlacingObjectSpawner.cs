@@ -6,15 +6,18 @@ using Google.XR.ARCoreExtensions;
 
 public class PlacingObjectSpawner : MonoBehaviour
 {
-    public AnchorDataManager AnchorDataManager;
-    public GameObject Prefab;
 
-    private ARAnchorManager ARAnchorManager;
+    [SerializeField]
+    private GameObject _prefab;
     private GameObject[] _prefabs;
+    
+    private AnchorDataManager _anchorDataManager;
+    private ARAnchorManager _arAnchorManager;
 
     private void Awake()
     {
-        ARAnchorManager = GetComponent<ARAnchorManager>();
+        _anchorDataManager = GetComponent<AnchorDataManager>();
+        _arAnchorManager = GetComponent<ARAnchorManager>();
     }
 
     /// <summary>
@@ -23,17 +26,17 @@ public class PlacingObjectSpawner : MonoBehaviour
     /// </summary>
     public void Create()
     {
-        AnchorDataManager.Load("DestinationAnchorDB​.json");
+        _anchorDataManager.Load("DestinationAnchorDB​.json");
 
-        int CountAnchors = AnchorDataManager.CountAnchorData();
+        int CountAnchors = _anchorDataManager.CountAnchorData();
         _prefabs = new GameObject[CountAnchors]; 
 
         for(int i = 0; i < CountAnchors; i++)
         {
-            string anchorID = AnchorDataManager.GetAnchorID(i);
-            ARCloudAnchor arCloudAnchor = ARAnchorManager.ResolveCloudAnchorId(anchorID);
+            string anchorID = _anchorDataManager.GetAnchorID(i);
+            ARCloudAnchor arCloudAnchor = _arAnchorManager.ResolveCloudAnchorId(anchorID);
 
-            _prefabs[i] = Instantiate(Prefab, arCloudAnchor.transform);
+            _prefabs[i] = Instantiate(_prefab, arCloudAnchor.transform);
             //프리팹 생성할 때 DestinationInfo의 정보를 넣어야함
         }
     }
