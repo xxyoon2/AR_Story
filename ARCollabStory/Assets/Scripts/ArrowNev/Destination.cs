@@ -28,7 +28,7 @@ public class Destination : MonoBehaviour
     /// <summary>
     /// 오브젝트와 실행 기기의 거리를 측정하여 게임의 상태를 변경하는 함수 
     /// </summary>
-    /// <param name="playerPos"></param>
+    /// <param name="playerPos">플레이어의 transform.position</param>
     public void StartCheckingDistance(Vector3 playerPos)
     {
         StartCoroutine(CheckDistance(playerPos));
@@ -42,7 +42,7 @@ public class Destination : MonoBehaviour
             Debug.Log($"{distance}");
             if (distance < 0.5f)
             {
-                Debug.Log($"{this.gameObject.name}과 충분히 가까움");
+                Debug.Log($"{gameObject.name}과 충분히 가까움");
                 GameManager.Instance.ChangeStatus.Invoke();
                 yield break;
             }
@@ -55,7 +55,7 @@ public class Destination : MonoBehaviour
     {
         if (other.tag == "MainCamera")
         {
-            Debug.Log($"{this.gameObject.name}오브젝트와 닿았다");
+            Debug.Log($"{gameObject.name}오브젝트와 닿았다");
         }
     }
 }
