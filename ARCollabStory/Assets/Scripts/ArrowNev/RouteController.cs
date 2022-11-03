@@ -6,22 +6,21 @@ public class RouteController : MonoBehaviour
 {
     //Stage1에 있는 루트들
     private GameObject StartRoute;
-    private GameObject Secondroute;
+    private GameObject SecondRoute;
     private GameObject ThirdRoute;
 
     private void Awake()
     {
         StartRoute = transform.GetChild(0).gameObject;
-        Secondroute = transform.GetChild(1).gameObject;
+        SecondRoute = transform.GetChild(1).gameObject;
         ThirdRoute = transform.GetChild(2).gameObject;
     }
 
     private void OnEnable()
     {
-        //프로토타입 이후 주석 해제할 것
-        //StartRoute.SetActive(false);
-        //Secondroute.SetActive(false);
-        //ThirdRoute.SetActive(false);
+        StartRoute.SetActive(false);
+        SecondRoute.SetActive(false);
+        ThirdRoute.SetActive(false);
     }
 
     /// <summary>
@@ -34,12 +33,15 @@ public class RouteController : MonoBehaviour
         {
             case "StartRoute":
                 StartRoute.SetActive(true);
+                Debug.Log($"{StartRoute} 루트 {StartRoute.activeSelf} 상태로 변경");
                 break;
             case "Secondroute":
-                Secondroute.SetActive(true);
+                SecondRoute.SetActive(true);
+                Debug.Log($"{SecondRoute} 루트 {SecondRoute.activeSelf} 상태로 변경");
                 break;
             case "ThirdRoute":
                 ThirdRoute.SetActive(true);
+                Debug.Log($"{ThirdRoute} 루트 {ThirdRoute.activeSelf} 상태로 변경");
                 break;
         }
     }
@@ -54,12 +56,15 @@ public class RouteController : MonoBehaviour
         {
             case "StartRoute":
                 StartRoute.SetActive(false);
+                Debug.Log($"{StartRoute} 루트 {StartRoute.activeSelf} 상태로 변경");
                 break;
             case "Secondroute":
-                Secondroute.SetActive(false);
+                SecondRoute.SetActive(false);
+                Debug.Log($"{SecondRoute} 루트 {SecondRoute.activeSelf} 상태로 변경");
                 break;
             case "ThirdRoute":
                 ThirdRoute.SetActive(false);
+                Debug.Log($"{ThirdRoute} 루트 {ThirdRoute.activeSelf} 상태로 변경");
                 break;
         }
     }

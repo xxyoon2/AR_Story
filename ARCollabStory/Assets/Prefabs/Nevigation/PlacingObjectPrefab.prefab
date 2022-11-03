@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6806681658647655381}
   - component: {fileID: 8539137374172117771}
-  - component: {fileID: 5281390086041673593}
   m_Layer: 0
   m_Name: PlacingObjectPrefab
   m_TagString: Untagged
@@ -75,20 +74,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 3
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &5281390086041673593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2332171452353556287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb93bbf336a22554d8b6e2c6e4c428ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7195644398795055200
 GameObject:
   m_ObjectHideFlags: 0

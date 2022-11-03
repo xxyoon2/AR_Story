@@ -14,8 +14,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 
 
     private List<LocationRecord> _locationRecords;
-    private DestinationsBehaviour _currentDestination;
-    public DestinationsBehaviour CurrentDestination
+    private Destination _currentDestination;
+    public Destination CurrentDestination
     {
         get { return _currentDestination; }
         set 
