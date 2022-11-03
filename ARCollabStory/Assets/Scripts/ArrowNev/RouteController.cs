@@ -5,22 +5,22 @@ using UnityEngine;
 public class RouteController : MonoBehaviour
 {
     //Stage1에 있는 루트들
-    private GameObject StartRoute;
-    private GameObject SecondRoute;
-    private GameObject ThirdRoute;
+    private GameObject _startRoute;
+    private GameObject _secondRoute;
+    private GameObject _thirdRoute;
 
     private void Awake()
     {
-        StartRoute = transform.GetChild(0).gameObject;
-        SecondRoute = transform.GetChild(1).gameObject;
-        ThirdRoute = transform.GetChild(2).gameObject;
+        _startRoute = transform.GetChild(0).gameObject;
+        _secondRoute = transform.GetChild(1).gameObject;
+        _thirdRoute = transform.GetChild(2).gameObject;
     }
 
     private void OnEnable()
     {
-        StartRoute.SetActive(false);
-        SecondRoute.SetActive(false);
-        ThirdRoute.SetActive(false);
+        _startRoute.SetActive(false);
+        _secondRoute.SetActive(false);
+        _thirdRoute.SetActive(false);
     }
 
     /// <summary>
@@ -32,16 +32,16 @@ public class RouteController : MonoBehaviour
         switch(RouteName)
         {
             case "StartRoute":
-                StartRoute.SetActive(true);
-                Debug.Log($"{StartRoute} 루트 {StartRoute.activeSelf} 상태로 변경");
+                _startRoute.SetActive(true);
+                Debug.Log($"{_startRoute} 루트 {_startRoute.activeSelf} 상태로 변경");
                 break;
             case "Secondroute":
-                SecondRoute.SetActive(true);
-                Debug.Log($"{SecondRoute} 루트 {SecondRoute.activeSelf} 상태로 변경");
+                _secondRoute.SetActive(true);
+                Debug.Log($"{_secondRoute} 루트 {_secondRoute.activeSelf} 상태로 변경");
                 break;
             case "ThirdRoute":
-                ThirdRoute.SetActive(true);
-                Debug.Log($"{ThirdRoute} 루트 {ThirdRoute.activeSelf} 상태로 변경");
+                _thirdRoute.SetActive(true);
+                Debug.Log($"{_thirdRoute} 루트 {_thirdRoute.activeSelf} 상태로 변경");
                 break;
         }
     }
@@ -55,16 +55,16 @@ public class RouteController : MonoBehaviour
         switch (RouteName)
         {
             case "StartRoute":
-                StartRoute.SetActive(false);
-                Debug.Log($"{StartRoute} 루트 {StartRoute.activeSelf} 상태로 변경");
+                _startRoute.SetActive(false);
+                Debug.Log($"{_startRoute} 루트 {_startRoute.activeSelf} 상태로 변경");
                 break;
             case "Secondroute":
-                SecondRoute.SetActive(false);
-                Debug.Log($"{SecondRoute} 루트 {SecondRoute.activeSelf} 상태로 변경");
+                _secondRoute.SetActive(false);
+                Debug.Log($"{_secondRoute} 루트 {_secondRoute.activeSelf} 상태로 변경");
                 break;
             case "ThirdRoute":
-                ThirdRoute.SetActive(false);
-                Debug.Log($"{ThirdRoute} 루트 {ThirdRoute.activeSelf} 상태로 변경");
+                _thirdRoute.SetActive(false);
+                Debug.Log($"{_thirdRoute} 루트 {_thirdRoute.activeSelf} 상태로 변경");
                 break;
         }
     }
