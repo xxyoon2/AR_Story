@@ -37,11 +37,33 @@ public class PuzzleRecord
     public int PuzzleIndex { get; set; }
 }
 
+public class CSVMethods
+{
+    public int ParseIntData(string dataValue)
+    {
+        if(int.TryParse(dataValue, out int result))
+        {
+            return int.Parse(dataValue);
+        }
 
+        return -1;
+    }
+
+    public double ParseDoubleData(string dataValue)
+    {
+        if (double.TryParse(dataValue, out double result))
+        {
+            return double.Parse(dataValue);
+        }
+
+        return -1;
+    }
+}
 public static class CSVParser
 {
+    static CSVMethods _csvMethods = new CSVMethods();
     public static List<LocationRecord> GetLocationInfos()
-    { 
+    {
         TextAsset locationTextAsset = Resources.Load<TextAsset>("LocationsInfo");
         List<LocationRecord> locationRecords = new List<LocationRecord>();
         locationRecords.Add(null);
@@ -53,11 +75,11 @@ public static class CSVParser
                 string stringData = csvString.ReadLine();
                 var dataValues = stringData.Split('|');
                 LocationRecord parseData = new LocationRecord();
-                if(int.TryParse(dataValues[0], out int intData)) parseData.DirectionIndex = int.Parse(dataValues[0]);
+                parseData.DirectionIndex = _csvMethods.ParseIntData(dataValues[0]);
                 parseData.MissionTypeInfo = dataValues[1];
                 parseData.MissionStatus = dataValues[2];
-                if(double.TryParse(dataValues[3], out double doubleData1)) parseData.Latitude = double.Parse(dataValues[3]);
-                if(double.TryParse(dataValues[4], out double doubleData2)) parseData.Longuitude = double.Parse(dataValues[4]);
+                parseData.Latitude = _csvMethods.ParseDoubleData(dataValues[3]);
+                parseData.Longuitude = _csvMethods.ParseDoubleData(dataValues[4]);
                 locationRecords.Add(parseData);
             }
         }
@@ -77,7 +99,7 @@ public static class CSVParser
                 string stringData = csvString.ReadLine();
                 var dataValues = stringData.Split('|');
                 DialogueRecord parseData = new DialogueRecord();
-                if (int.TryParse(dataValues[0], out int intData)) parseData.Index = int.Parse(dataValues[0]);
+                parseData.Index = _csvMethods.ParseIntData(dataValues[0]);
                 parseData.Name = dataValues[1];
                 parseData.Dialogue = dataValues[2];
                 Debug.Log($"{parseData.Dialogue}");
@@ -94,6 +116,7 @@ public static class CSVParser
         List<PuzzleRecord> puzzles = new List<PuzzleRecord>();
         stories.Add(null);
         puzzles.Add(null);
+
         using (StringReader csvString = new StringReader(storyTextAsset.text))
         {
             while(csvString.Peek() > -1)
@@ -106,7 +129,7 @@ public static class CSVParser
                 {
                     PuzzleRecord puzzleData = new PuzzleRecord();
 
-                    if (int.TryParse(dataValues[4], out int puzzleIndexData)) puzzleData.PuzzleIndex = int.Parse(dataValues[4]);
+                    puzzleData.PuzzleIndex = _csvMethods.ParseIntData(dataValues[4]);
                     puzzleData.PuzzleInfo = dataValues[3];
                     puzzleData.PuzzleStory = dataValues[2].Trim('\'');
                     string mosaicText = "";
@@ -119,12 +142,16 @@ public static class CSVParser
 
                     puzzles.Add(puzzleData);
                 }
-                if (int.TryParse(dataValues[0], out int pageData)) bookData.Page = int.Parse(dataValues[0]);
-                if (int.TryParse(dataValues[1], out int indexData)) bookData.Index = int.Parse(dataValues[1]);
+
+                bookData.Page = _csvMethods.ParseIntData(dataValues[0]);
+                bookData.Index = _csvMethods.ParseIntData(dataValues[1]);
                 if (bookData.Story == null) bookData.Story = dataValues[2]; 
+
                 stories.Add(bookData);
             }
         }
+        stories.Remove(null);
+        puzzles.Remove(null);
         return (stories, puzzles);
     }
 }
