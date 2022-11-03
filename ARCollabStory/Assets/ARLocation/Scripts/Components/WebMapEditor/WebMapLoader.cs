@@ -169,7 +169,7 @@ namespace ARLocation
         {
             var xmlString = XmlDataFile.text;
 
-            Debug.Log(xmlString);
+            //Debug.Log(xmlString);
 
             XmlDocument xmlDoc = new XmlDocument();
 
@@ -186,8 +186,8 @@ namespace ARLocation
             var nodes = root.ChildNodes;
             foreach (XmlNode node in nodes)
             {
-                Debug.Log(node.InnerXml);
-                Debug.Log(node["id"].InnerText);
+                //Debug.Log(node.InnerXml);
+                //Debug.Log(node["id"].InnerText);
 
                 int id = int.Parse(node["id"].InnerText);
                 double lat = double.Parse(node["lat"].InnerText, CultureInfo.InvariantCulture);
@@ -218,7 +218,7 @@ namespace ARLocation
 
                 _dataEntries.Add(entry);
 
-                Debug.Log($"{id}, {lat}, {lng}, {altitude}, {altitudeMode}, {name}, {meshId}, {movementSmoothing}, {maxNumberOfLocationUpdates}, {useMovingAverage}, {hideObjectUtilItIsPlaced}");
+                //Debug.Log($"{id}, {lat}, {lng}, {altitude}, {altitudeMode}, {name}, {meshId}, {movementSmoothing}, {maxNumberOfLocationUpdates}, {useMovingAverage}, {hideObjectUtilItIsPlaced}");
             }
         }
     }

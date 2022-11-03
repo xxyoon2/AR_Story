@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class SetDestinations : MonoBehaviour
 {
-    private DestinationsBehaviour[] destinations;
+    private Destination[] destinations;
     private int currentIndex;
     
     void Start()
     {
         int destinationCount = transform.childCount;
-        destinations = new DestinationsBehaviour[destinationCount];
+        destinations = new Destination[destinationCount];
         GameManager.Instance.DirectionsStatusUpdate.AddListener(RenewalStatus);
         GameManager.Instance.ChangeStatus.AddListener(ChangeStatus);
         
         // 목적지 오브젝트들 받아오고 각각 csv 파일의 미션타입과 연동
         for (int i = 0; i < destinationCount; i++)
         {
-            destinations[i] = transform.GetChild(i).GetComponent<DestinationsBehaviour>();
+            destinations[i] = transform.GetChild(i).GetComponent<Destination>();
             destinations[i].MissionType = GameManager.Instance.LocationRecords[i + 1].MissionTypeInfo;
             Debug.Log($"{destinations[i].MissionType}");
         }

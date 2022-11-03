@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using Google.XR.ARCoreExtensions;
 
-public class DestinationsBehaviour : MonoBehaviour
+public class Destination : MonoBehaviour
 {
     [SerializeField]
     private Text _collisionLogText;
@@ -25,10 +25,15 @@ public class DestinationsBehaviour : MonoBehaviour
         set { _missionStatus = value; }
     }
 
+    /// <summary>
+    /// 오브젝트와 실행 기기의 거리를 측정하여 게임의 상태를 변경하는 함수 
+    /// </summary>
+    /// <param name="playerPos">플레이어의 transform.position</param>
     public void StartCheckingDistance(Vector3 playerPos)
     {
         StartCoroutine(CheckDistance(playerPos));
     }
+
     private IEnumerator CheckDistance(Vector3 _playerPos)
     {
         while(true)
@@ -37,12 +42,20 @@ public class DestinationsBehaviour : MonoBehaviour
             Debug.Log($"{distance}");
             if (distance < 0.5f)
             {
-                Debug.Log($"{_missionType} 목적지 도착");
+                Debug.Log($"{gameObject.name}과 충분히 가까움");
                 GameManager.Instance.ChangeStatus.Invoke();
                 yield break;
             }
             
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "MainCamera")
+        {
+            Debug.Log($"{gameObject.name}오브젝트와 닿았다");
         }
     }
 }
