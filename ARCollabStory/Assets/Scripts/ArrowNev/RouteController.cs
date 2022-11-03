@@ -4,68 +4,37 @@ using UnityEngine;
 
 public class RouteController : MonoBehaviour
 {
-    //Stage1에 있는 루트들
-    private GameObject _startRoute;
-    private GameObject _secondRoute;
-    private GameObject _thirdRoute;
+    private GameObject[] _routes;
 
     private void Awake()
     {
-        _startRoute = transform.GetChild(0).gameObject;
-        _secondRoute = transform.GetChild(1).gameObject;
-        _thirdRoute = transform.GetChild(2).gameObject;
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            _routes[i] = transform.GetChild(i).gameObject;
+        }
     }
 
     private void OnEnable()
     {
-        _startRoute.SetActive(false);
-        _secondRoute.SetActive(false);
-        _thirdRoute.SetActive(false);
-    }
-
-    /// <summary>
-    /// 루트를 키는 함수
-    /// </summary>
-    /// <param name="RouteName"></param>
-    public void OnRoute(string RouteName)
-    {
-        switch(RouteName)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            case "StartRoute":
-                _startRoute.SetActive(true);
-                Debug.Log($"{_startRoute} 루트 {_startRoute.activeSelf} 상태로 변경");
-                break;
-            case "Secondroute":
-                _secondRoute.SetActive(true);
-                Debug.Log($"{_secondRoute} 루트 {_secondRoute.activeSelf} 상태로 변경");
-                break;
-            case "ThirdRoute":
-                _thirdRoute.SetActive(true);
-                Debug.Log($"{_thirdRoute} 루트 {_thirdRoute.activeSelf} 상태로 변경");
-                break;
+            _routes[i].SetActive(false);
         }
     }
 
     /// <summary>
-    /// 루트를 끄는 함수
+    /// 화살표를 배치하는 오브젝트를 키는 함수
     /// </summary>
-    /// <param name="RouteName"></param>
-    public void OffRoute(string RouteName)
+    /// <param name="routeNum">0 : 첫번째 루트, 1 : 두번째 루트, 2 : 세번째 루트</param>
+    public void OnRoute(int routeNum)
     {
-        switch (RouteName)
-        {
-            case "StartRoute":
-                _startRoute.SetActive(false);
-                Debug.Log($"{_startRoute} 루트 {_startRoute.activeSelf} 상태로 변경");
-                break;
-            case "Secondroute":
-                _secondRoute.SetActive(false);
-                Debug.Log($"{_secondRoute} 루트 {_secondRoute.activeSelf} 상태로 변경");
-                break;
-            case "ThirdRoute":
-                _thirdRoute.SetActive(false);
-                Debug.Log($"{_thirdRoute} 루트 {_thirdRoute.activeSelf} 상태로 변경");
-                break;
-        }
+        _routes[routeNum].SetActive(true);
+        Debug.Log($"{routeNum}번째 루트가 켜짐");
+    }
+
+    public void OffRoute(int routeNum)
+    {
+        _routes[routeNum].SetActive(false);
+        Debug.Log($"{routeNum}번째 루트가 꺼짐");
     }
 }
