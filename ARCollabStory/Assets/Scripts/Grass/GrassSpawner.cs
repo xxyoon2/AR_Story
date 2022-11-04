@@ -1,4 +1,4 @@
-using Google.XR.ARCoreExtensions;
+ï»¿using Google.XR.ARCoreExtensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +13,8 @@ public class GrassSpawner : MonoBehaviour
     private GameObject[] _grasses;
 
     private int _grassNowCount = 0;
-    private int _grassMaxCount;
-    private int _grassCatchCount;
+    public int GrassMaxCount { get; private set; }
+    public int GrassCatchCount { get; private set; }
 
     private bool[] _isUsed;
     private Queue<int> _randomIndexQueue = new Queue<int>();
@@ -31,6 +31,8 @@ public class GrassSpawner : MonoBehaviour
     {
         _arAnchorManager = GetComponent<ARAnchorManager>();
         _anchorDataManager = GetComponent<AnchorDataManager>();
+
+        _anchorDataManager.Load("story2_l_01_1â€‹");
     }
 
     private void Update()
@@ -45,33 +47,33 @@ public class GrassSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// cloud Anchor ID¸¦ »ç¿ëÇØ¼­ anchor À§Ä¡¿¡ Ç®µ¢ÀÌ¸¦ »ı¼ºÇÏ´Â ¸Ş¼­µå
+    /// cloud Anchor IDë¥¼ ì‚¬ìš©í•´ì„œ anchor ìœ„ì¹˜ì— í’€ë©ì´ë¥¼ ìƒì„±í•˜ëŠ” ë©”ì„œë“œ
     /// </summary>
     public void Create()
     {
         int anchorCount = _anchorDataManager.CountAnchorData();
-        // ¾ŞÄ¿°¡ ÇÏ³ªµµ ¾ø´Ù¸é
+        // ì•µì»¤ê°€ í•˜ë‚˜ë„ ì—†ë‹¤ë©´
         if (anchorCount == 0)
         {
-            Debug.Log("ÀúÀåµÈ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
+            Debug.Log("ì €ì¥ëœ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
         _grasses = new GameObject[anchorCount];
         _isUsed = new bool[anchorCount];
-        _grassMaxCount = anchorCount;
+        GrassMaxCount = anchorCount;
 
         RandomIndexQueueCreate();
 
         for (int i = 0; i < anchorCount; i++)
         {
-            // anchorID¸¦ »ç¿ëÇØ arCloudAnchor ¹İÈ¯
+            // anchorIDë¥¼ ì‚¬ìš©í•´ arCloudAnchor ë°˜í™˜
             string anchorID = _anchorDataManager.GetAnchorID(i);
             ARCloudAnchor arCloudAnchor = _arAnchorManager.ResolveCloudAnchorId(anchorID);
 
-            // ¾ŞÄ¿ À§Ä¡¿¡ Ç®µ¢ÀÌ »ı¼º
+            // ì•µì»¤ ìœ„ì¹˜ì— í’€ë©ì´ ìƒì„±
             _grasses[i] = Instantiate(GrassPrefab, arCloudAnchor.transform);
-            // Ç®µ¢ÀÌ¸¦ ÀâÀ» ¶§¸¶´Ù °ü¸®ÇÏ±â À§ÇØ parent·Î ¼¼ÆÃ
+            // í’€ë©ì´ë¥¼ ì¡ì„ ë•Œë§ˆë‹¤ ê´€ë¦¬í•˜ê¸° ìœ„í•´ parentë¡œ ì„¸íŒ…
             _grasses[i].transform.parent = gameObject.transform;
             _grasses[i].SetActive(false);
         }
@@ -80,20 +82,20 @@ public class GrassSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÆùµÉ ¼ø¼­¸¦ ¹Ì¸® ·£´ıÀ¸·Î ÁöÁ¤ÇÏ´Â ¸Ş¼­µå
+    /// ìŠ¤í°ë  ìˆœì„œë¥¼ ë¯¸ë¦¬ ëœë¤ìœ¼ë¡œ ì§€ì •í•˜ëŠ” ë©”ì„œë“œ
     /// </summary>
     private void RandomIndexQueueCreate()
     {
         int count = 0;
 
-        while (count < _grassMaxCount)
+        while (count < GrassMaxCount)
         {
-            int randomNum = Random.Range(0, _grassMaxCount);
+            int randomNum = Random.Range(0, GrassMaxCount);
 
-            // »ç¿ëµÈ ¼ıÀÚ°¡ ¾Æ´Ï¶ó¸é
+            // ì‚¬ìš©ëœ ìˆ«ìê°€ ì•„ë‹ˆë¼ë©´
             if (!_isUsed[randomNum])
             {
-                // ·£´ıÇÑ ¼ø¼­¸¦ Å¥¿¡ ÀúÀå
+                // ëœë¤í•œ ìˆœì„œë¥¼ íì— ì €ì¥
                 _randomIndexQueue.Enqueue(randomNum);
                 _isUsed[randomNum] = true;
                 count++;
@@ -102,21 +104,21 @@ public class GrassSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Ç®µ¢ÀÌ°¡ ·£´ıÀ¸·Î ÇÏ³ª¾¿ º¸¿©Áö´Â ¸Ş¼­µå
+    /// í’€ë©ì´ê°€ ëœë¤ìœ¼ë¡œ í•˜ë‚˜ì”© ë³´ì—¬ì§€ëŠ” ë©”ì„œë“œ
     /// </summary>
     private void RandomAppear()
     {
-        // ·£´ıÇÏ°Ô ÀúÀåµÈ ¼ø¼­¸¦ ºÒ·¯¿È
+        // ëœë¤í•˜ê²Œ ì €ì¥ëœ ìˆœì„œë¥¼ ë¶ˆëŸ¬ì˜´
         int randomNum = _randomIndexQueue.Dequeue();
 
         _grasses[randomNum].SetActive(true);
-        // ¾ŞÄ¿´Â Áö¸é¿¡ ³Ê¹« ¹ÙÂ¦ ºÙ¾î ÀÖ¾î¼­ Ç®µ¢ÀÌ°¡ Á» ´õ Àß º¸ÀÌµµ·Ï À§·Î ¿Ã·ÁÁØ´Ù.
+        // ì•µì»¤ëŠ” ì§€ë©´ì— ë„ˆë¬´ ë°”ì§ ë¶™ì–´ ìˆì–´ì„œ í’€ë©ì´ê°€ ì¢€ ë” ì˜ ë³´ì´ë„ë¡ ìœ„ë¡œ ì˜¬ë ¤ì¤€ë‹¤.
         _grasses[randomNum].transform.Translate(new Vector3(0f, 0.2f, 0f), Space.World);
         _grassNowCount++;
     }
 
     /// <summary>
-    /// Ã¹ 1È¸¿¡ ÇÑÇØ, Ç®µ¢ÀÌ¸¦ ÇÑ¹ø¿¡ ¿©·¯¸¶¸® ½ºÆùÇÏ´Â ¸Ş¼­µå
+    /// ì²« 1íšŒì— í•œí•´, í’€ë©ì´ë¥¼ í•œë²ˆì— ì—¬ëŸ¬ë§ˆë¦¬ ìŠ¤í°í•˜ëŠ” ë©”ì„œë“œ
     /// </summary>
     private void FirstAppear()
     {
@@ -134,13 +136,13 @@ public class GrassSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀÏÁ¤ ½Ã°£¸¶´Ù Ç®µ¢ÀÌ¸¦ ½ºÆùÇÏ´Â ÄÚ·çÆ¾ ÇÔ¼ö
+    /// ì¼ì • ì‹œê°„ë§ˆë‹¤ í’€ë©ì´ë¥¼ ìŠ¤í°í•˜ëŠ” ì½”ë£¨í‹´ í•¨ìˆ˜
     /// </summary>
     private IEnumerator AppearAfter()
     {
         _isSpawnStarted = true;
 
-        while (_grassNowCount < _grassMaxCount)
+        while (_grassNowCount < GrassMaxCount)
         {
             yield return new WaitForSecondsRealtime(RespawnTime);
             RandomAppear();
@@ -150,14 +152,15 @@ public class GrassSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Ç®µ¢ÀÌ¸¦ ÀâÀ» ¶§¸¶´Ù count¸¦ ¼¼ÁÖ´Â ¸Ş¼­µå
+    /// í’€ë©ì´ë¥¼ ì¡ì„ ë•Œë§ˆë‹¤ countë¥¼ ì„¸ì£¼ëŠ” ë©”ì„œë“œ
     /// </summary>
     public void CatchGrass()
     {
-        _grassCatchCount++;
-        if (_grassCatchCount == _grassMaxCount)
+
+        GrassCatchCount++;
+        if (GrassCatchCount == GrassMaxCount)
         {
-            Debug.Log("´Ù Àâ¾Ò´Ù");
+            Debug.Log("ë‹¤ ì¡ì•˜ë‹¤");
         }
     }
 }
