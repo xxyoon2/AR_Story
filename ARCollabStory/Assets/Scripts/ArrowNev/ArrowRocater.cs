@@ -21,7 +21,7 @@ public class ArrowRocater : MonoBehaviour
     private void UpdateArrowRocaterTransform()
     {
         transform.position = _playerPos;
-        //테스트용
+
         transform.LookAt(new Vector3(_destinationPos.x, transform.position.y, _destinationPos.z));
     }
 
