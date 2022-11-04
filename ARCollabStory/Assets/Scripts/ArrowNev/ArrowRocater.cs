@@ -15,16 +15,14 @@ public class ArrowRocater : MonoBehaviour
     }
 
     /// <summary>
-    /// 플레이어를 중심으로 Y축으로만 목적지를 향해 회전하는 함수
+    /// Y축으로만 목적지를 향해 회전하는 함수
     /// Update문에 넣어야 함
     /// </summary>
     private void UpdateArrowRocaterTransform()
     {
         transform.position = _playerPos;
-
-        Vector3 targetPos = new Vector3(_destinationPos.x, transform.position.y, _destinationPos.z);
-        transform.LookAt(targetPos);
-
+        //테스트용
+        transform.LookAt(new Vector3(_destinationPos.x, transform.position.y, _destinationPos.z));
     }
 
     /// <summary>
