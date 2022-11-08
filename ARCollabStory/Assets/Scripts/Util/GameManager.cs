@@ -7,6 +7,29 @@ using UnityEngine.Events;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
+    #region View 전환
+    public enum ViewMode
+    {
+        NONE,
+        NOTE,
+        MAP,
+        MAX,
+    }
+    
+    public ViewMode Mode { get; private set; }
+    
+    [SerializeField] private GameObject[] _viewController = new GameObject[(int)MAX];
+    
+    public void SetViewMode(ViewMode mode)
+    {
+        _viewController[(int)Mode].SetActive(false);
+        _viewController[(int)mode].SetActive(true);
+
+        Mode = mode;
+    }
+    #endregion
+
+    #region CSV 파싱
     public UnityEvent<int> DirectionsStatusUpdate = new UnityEvent<int>();
     public UnityEvent SetCSVData = new UnityEvent();
     public UnityEvent<int> SetVisibleQuestArea = new UnityEvent<int>();
@@ -67,4 +90,5 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         SetVisibleQuestArea.Invoke(index);
     }
+    #endregion
 }
