@@ -8,18 +8,18 @@ using UnityEngine.Events;
 public class GameManager : SingletonBehaviour<GameManager>
 {
     #region View 전환
-    [SerializeField]
-    private GameObject[] _viewController = new GameObject[3];
-
     public enum ViewMode
     {
         NONE,
         NOTE,
         MAP,
+        MAX,
     }
-
+    
     public ViewMode Mode { get; private set; }
-
+    
+    [SerializeField] private GameObject[] _viewController = new GameObject[(int)MAX];
+    
     public void SetViewMode(ViewMode mode)
     {
         _viewController[(int)Mode].SetActive(false);
