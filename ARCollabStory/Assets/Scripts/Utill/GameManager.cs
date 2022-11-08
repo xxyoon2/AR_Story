@@ -18,7 +18,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     
     public ViewMode Mode { get; private set; }
     
-    [SerializeField] private GameObject[] _viewController = new GameObject[(int)MAX];
+    [SerializeField] private GameObject[] _viewController = new GameObject[(int)ViewMode.MAX];
     
     public void SetViewMode(ViewMode mode)
     {
