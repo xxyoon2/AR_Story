@@ -12,8 +12,6 @@ public class LocationRecord
     public int DirectionIndex { get; set; }
     public string MissionTypeInfo { get; set; }
     public string MissionStatus { get; set; }
-    public double Latitude { get; set; }
-    public double Longuitude { get; set; }
 }
 
 public class DialogueRecord
@@ -78,12 +76,11 @@ public static class CSVParser
                 parseData.DirectionIndex = _csvMethods.ParseIntData(dataValues[0]);
                 parseData.MissionTypeInfo = dataValues[1];
                 parseData.MissionStatus = dataValues[2];
-                parseData.Latitude = _csvMethods.ParseDoubleData(dataValues[3]);
-                parseData.Longuitude = _csvMethods.ParseDoubleData(dataValues[4]);
                 locationRecords.Add(parseData);
             }
         }
         locationRecords.Remove(null);
+
         return locationRecords;
     }
 

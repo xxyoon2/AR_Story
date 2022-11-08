@@ -6,17 +6,11 @@ using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
-public class LocationUI
-{
-    public Button Button { get; set; }
-    public string StatusInfo { get; set; }
-}
-
-
 public class MapView : MonoBehaviour, IView
 {
     #region button&image properties
-    public LocationUI[] Buttons { get; private set; }
+    private static readonly int _buttonIndex = 7;
+    public Button[] Buttons { get; set; } = new Button[_buttonIndex];
     public Image Area1Image { get; private set; }
     public Image Area2Image { get; private set; }
     public Image Area3Image { get; private set; }
@@ -24,13 +18,10 @@ public class MapView : MonoBehaviour, IView
 
     private void Awake()
     {
-        Buttons = new LocationUI[transform.childCount];
         for (int i = 0; i < Buttons.Length; i++)
         {
             string ButtonIndex = "Location" + (i + 1);
-            Debug.Log($"{ButtonIndex}");
-            Buttons[i].Button = transform.Find(ButtonIndex).GetComponent<Button>();
-            Buttons[i].StatusInfo = ButtonIndex;
+            Buttons[i] = transform.Find(ButtonIndex).GetComponent<Button>();
             Debug.Assert(Buttons[i] != null);
         }
 
