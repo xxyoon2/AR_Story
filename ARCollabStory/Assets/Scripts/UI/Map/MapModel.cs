@@ -15,17 +15,16 @@ namespace Model
             set { _destinations = value; }
         }
 
-
         public static void SetPopUpUIText(bool canInteract)
         {
             InteractionEnable.Value = canInteract;
             if(canInteract)
             {
-                // ±æ ¾È³» °¡´É ¹®±¸ ~
+                // ê¸¸ ì•ˆë‚´ ê°€ëŠ¥ ë¬¸êµ¬ ~
             }
             else
             {
-                // ±æ ¾È³» ºÒ°¡´É ¹®±¸ ~
+                // ê¸¸ ì•ˆë‚´ ë¶ˆê°€ëŠ¥ ë¬¸êµ¬ ~
             }
         }
     }
