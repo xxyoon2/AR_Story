@@ -10,7 +10,7 @@ public sealed class MapPresenter : IPresenter
     private MapView _mapView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
     
-    private int currentDestination = 0;
+    private int _currentDestination = 0;
     
     public void OnInitialize(IView view)
     {
@@ -35,7 +35,7 @@ public sealed class MapPresenter : IPresenter
             ChangeButtonColor(index);
         }
         
-        SetCurrentDestination(currentDestination);
+        SetCurrentDestination(_currentDestination);
     }
 
     private void ChangeButtonColor(int index)
@@ -63,16 +63,16 @@ public sealed class MapPresenter : IPresenter
 
     private void SetButtonStatusDone(int index)
     {
-        Model.MapModel.Destinations[currentDestination + 1].MissionStatus = "Done";
+        Model.MapModel.Destinations[index + 1].MissionStatus = "Done";
 
-        if(Model.MapModel.Destinations[currentDestination + 1].DirectionIndex % 2 == 0)
+        if(Model.MapModel.Destinations[index + 1].DirectionIndex % 2 == 0)
         {
             // NPC와 대화를 나눠 Done이 된 목적지 인덱스가 짝수일 시 퀘스트 범위 활성화
         }
         else
         {
             currentDestination++;
-            SetCurrentDestination(currentDestination);
+            SetCurrentDestination(_currentDestination);
         }
     }
 
