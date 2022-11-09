@@ -9,6 +9,7 @@ public sealed class MapPresenter : IPresenter
 {
     private MapView _mapView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
+    
     private int currentDestination = 0;
     
     public void OnInitialize(IView view)
@@ -66,7 +67,7 @@ public sealed class MapPresenter : IPresenter
 
         if(Model.MapModel.Destinations[currentDestination + 1].DirectionIndex % 2 == 0)
         {
-            // NPC¿Í ´ëÈ­¸¦ ³ª´² DoneÀÌ µÈ ¸ñÀûÁö ÀÎµ¦½º°¡ Â¦¼öÀÏ ½Ã Äù½ºÆ® ¹üÀ§ È°¼ºÈ­
+            // NPCì™€ ëŒ€í™”ë¥¼ ë‚˜ëˆ  Doneì´ ëœ ëª©ì ì§€ ì¸ë±ìŠ¤ê°€ ì§ìˆ˜ì¼ ì‹œ í€˜ìŠ¤íŠ¸ ë²”ìœ„ í™œì„±í™”
         }
         else
         {
@@ -82,7 +83,7 @@ public sealed class MapPresenter : IPresenter
         if(status == "InProgress")
         {
             Model.MapModel.SetPopUpUIText(true);
-            Debug.Log("ÁøÇàÁß");
+            Debug.Log("ì§„í–‰ì¤‘");
         }
         else
         {
