@@ -6,6 +6,7 @@ public class MapViewController : ViewController
 {
     private MapView _mapView;
     private MapPresenter _mapPresenter = new MapPresenter();
+    
     private void Awake()
     {
         _mapView = transform.Find("MapView").GetComponent<MapView>();
